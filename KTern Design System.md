@@ -746,10 +746,10 @@ export const FlaskIcon = ({ className }) => (
 
 ```
 ┌─────────────────────────────────┐
-│  [Icon?] Label Text [Icon?]     │  ← Height: 40px
+│  [Icon?] Label Text [Icon?]     │  ← Height: ~44px
 └─────────────────────────────────┘
   ↑                             ↑
-  Padding-X: 16px          Border-Radius: 6px
+  Padding-X: 24px          Radius: 12px (TL-0)
 ```
 
 #### 4.1.2 Button Variants
@@ -833,31 +833,6 @@ export const FlaskIcon = ({ className }) => (
 </button>
 ```
 
-**Energy Button (AI/Innovation)**
-- **Purpose:** AI-driven actions (Generate, Analyze, Transform)
-- **Visual Specs:**
-  - Background: Gradient (Maroon → Orange)
-  - Text: White
-  - Icon: Sparkles (left aligned)
-- **Interaction:** Icon subtle pulse on hover
-
-```html
-<button class="bg-gradient-to-r from-brand-primary via-[#d94e28] to-brand-secondary 
-               text-white font-brand font-semibold 
-               rounded-md px-4 py-2.5 
-               hover:opacity-90
-               focus:ring-4 focus:ring-brand-secondary/50 focus:outline-none
-               transition-all duration-200 
-               shadow-lg shadow-brand-secondary/20
-               flex items-center gap-2">
-  <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-          d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
-  </svg>
-  Generate Insights
-</button>
-```
-
 **Secondary Button**
 - **Purpose:** Alternative actions (Cancel, Back, Filter)
 - **Visual Specs:**
@@ -876,22 +851,6 @@ export const FlaskIcon = ({ className }) => (
   <span class="relative z-10 text-brand-primary group-hover:text-white transition-colors duration-300">
       Cancel
   </span>
-</button>
-```
-
-**Ghost Button**
-- **Purpose:** Low priority (Table actions, links)
-- **Visual Specs:**
-  - Background: Transparent
-  - Text: `maroon-500`
-
-```html
-<button class="bg-transparent text-brand-primary font-medium 
-               rounded-md px-4 py-2 
-               hover:bg-brand-primary/5
-               focus:ring-4 focus:ring-brand-primary/20 focus:outline-none
-               transition-all duration-200">
-  View Details →
 </button>
 ```
 
