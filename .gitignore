@@ -1,11 +1,16 @@
+# Ignore everything
+*
+
+# Except these essential files
+!index.html
+!Fav-icon.png
+!KTern Design System.md
+!.gitignore
+
 # Ignore local/IDE files
 .vscode/
 .idea/
 *.log
-
-# Ignore deprecated/backup files
-*_deprecated*
-not for now/
 
 # OS files
 .DS_Store
