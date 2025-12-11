@@ -128,7 +128,7 @@ Design System
 | Role | Light Mode | Dark Mode | Usage |
 |------|-----------|-----------|--------|
 | **Success** | `#3cd070` (Emerald Teal) | `#91e0c7` | Positive feedback, completion |
-| **Warning** | `#fada5e` (Honey Gold) | `#ecd540` | Alerts, cautions |
+| **Warning** | `#ffc107` (Material UI Amber) | `#ffd54f` | Alerts, cautions |
 | **Error/Danger** | `#c41e3a` | `#de828a` | Errors, destructive actions |
 | **Info** | `#4166f5` (Aurora Blue) | `#6782f7` | Informational banners, links |
 
@@ -179,7 +179,7 @@ background: linear-gradient(135deg, #f6e6e3 0%, #FF8C42 100%);
 background: linear-gradient(135deg, #4166f5 0%, #3cd070 100%);
 
 //darkmode
-background: linear-gradient(135deg, #f6e6e3 0%, #3cd070 100%);
+background: linear-gradient(135deg, #4166f5 0%, #3cd070 100%);
 ```
 
 #### 2.1.7 Accessibility Requirements
@@ -1362,7 +1362,7 @@ Simple, clean project card with progress indicator.
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center gap-2">
-        <img src="logo.png" alt="KTern Logo" class="w-8 h-8">
+        <img src="Fav-icon.png" alt="KTern Logo" class="w-8 h-8 rounded-lg object-cover">
         <span class="font-brand font-bold text-lg">
           KTern.<span class="text-brand-secondary">AI</span>
         </span>
@@ -1429,48 +1429,61 @@ Simple, clean project card with progress indicator.
 
 #### 4.5.1 Alert / Toast
 
-**Success Alert**
+**Innovative Toast (Glassmorphism & Gradient)**
 ```html
-<div class="bg-success/10 border border-success rounded-xl p-4 
-            flex items-start gap-3">
-  <svg class="w-5 h-5 text-success mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-  </svg>
-  <div class="flex-1">
-    <h5 class="font-brand font-semibold text-success mb-1">
-      Migration Plan Created
-    </h5>
-    <p class="text-sm text-gray-600">
-      Your S/4HANA migration roadmap is ready for review.
-    </p>
-  </div>
-  <button class="text-gray-400 hover:text-gray-600">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
-  </button>
+<!-- Success Toast -->
+<div class="group relative overflow-hidden rounded-xl 
+            bg-surface-light/80 dark:bg-surface-dark/80 
+            backdrop-blur-sm border border-border-light dark:border-border-dark 
+            shadow-lg hover:shadow-xl transition-all duration-300">
+            
+    <!-- Diagonal Accent Stripe -->
+    <div class="absolute top-0 left-0 w-1 h-full 
+                bg-gradient-to-b from-success via-success to-success/50">
+    </div>
+    <div class="absolute top-0 left-0 w-16 h-16 bg-success/5 rounded-br-full"></div>
+    
+    <div class="relative flex items-start gap-4 p-4">
+        <!-- Elevated Icon with Glow -->
+        <div class="relative flex-shrink-0">
+            <div class="absolute inset-0 bg-success/20 blur-md rounded-full"></div>
+            <div class="relative w-10 h-10 rounded-full 
+                        bg-gradient-to-br from-success/20 to-success/10 
+                        border border-success/30 
+                        flex items-center justify-center backdrop-blur-sm">
+                <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="flex-1 min-w-0 pt-1">
+            <h4 class="font-bold text-sm text-text-main-light dark:text-text-main-dark 
+                       mb-1 flex items-center gap-2">
+                Success
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+            </h4>
+            <p class="text-xs text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                Your changes have been saved successfully.
+            </p>
+        </div>
+        
+        <button class="flex-shrink-0 w-6 h-6 rounded-md 
+                       hover:bg-gray-100 dark:hover:bg-gray-800 
+                       text-text-muted-light group-hover:text-text-main-light 
+                       transition-all flex items-center justify-center">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
 </div>
 ```
 
-**Error Alert**
-```html
-<div class="bg-danger/10 border border-danger rounded-xl p-4 
-            flex items-start gap-3">
-  <svg class="w-5 h-5 text-danger mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-  </svg>
-  <div class="flex-1">
-    <h5 class="font-brand font-semibold text-danger mb-1">
-      Connection Failed
-    </h5>
-    <p class="text-sm text-gray-600">
-      Unable to connect to SAP system. Please check credentials.
-    </p>
-  </div>
-</div>
-```
+**Toast Types Configuration:**
+- **Error:** Accent `from-danger`, Icon `X`, Color `#c41e3a`
+- **Warning:** Accent `from-warning`, Icon `Alert`, Color `#ffc107`
+- **Info:** Accent `from-info`, Icon `Info`, Color `#4166f5`
 
 #### 4.5.2 Loading Spinner
 
@@ -1683,7 +1696,7 @@ Simple, clean project card with progress indicator.
 3. Emerald Teal: `#3cd070` (Success Metrics)
 4. Arctic Amber: `#ff8f00` (Growth/Trends)
 5. Aurora Blue: `#4166f5` (Forecasts)
-6. Honey Gold: `#fada5e` (Insights/Warnings)
+6. Material UI Amber: `#ffc107` (Insights/Warnings)
 
 **Sequential Data:**
 ```css
