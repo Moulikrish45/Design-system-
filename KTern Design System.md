@@ -102,7 +102,7 @@ Design System
 #### 2.1.1 Brand Colors
 
 **Primary: Ruby Maroon**
-- **Light Mode:** `#9b1c2c`
+- **Light Mode:** `#a9203e`
 - **Dark Mode:** `#c41e3a`
 - **Usage:** Core actions, navigation, primary CTAs, active states
 - **Psychology:** Trust, governance, authority, emotional grounding
@@ -139,7 +139,7 @@ Design System
 --maroon-900: #430d1a;  /* Dark hover state */
 --maroon-700: #651426;  /* Button hover */
 --maroon-600: #76172c;  /* Focused accent */
---maroon-500: #9b1c2c;  /* FLAGSHIP */
+--maroon-500: #a9203e;  /* FLAGSHIP */
 --maroon-400: #c41e3a;  /* System burgundy */
 --maroon-100: #f3b0aa;  /* Badge background */
 --maroon-50:  #f6e6e3;  /* Muted background */
@@ -161,7 +161,7 @@ Design System
 background: linear-gradient(90deg, #a9203e 0%, #d94e28 50%, #ff8f00 100%);
 
 //darkmode
-background: linear-gradient(90deg, #c41e3a 0%, #ffae42 50%, #c41e3a 100%);
+background: linear-gradient(90deg, #c41e3a 0%, #ffae42 50%, #d94e28 100%);
 ```
 
 **Arctic Light** (Subtle Background Washes)
@@ -312,10 +312,10 @@ The KTern Design System follows the professional **60-30-10 color distribution r
 | `text-lg` | 1.125rem | 18px | Introductory paragraphs |
 | `text-xl` | 1.25rem | 20px | Card titles, subsection headers |
 | `text-2xl` | 1.5rem | 24px | Section headers, modal titles |
-| `text-3xl` | 2rem | 32px | Page titles, key metrics |
-| `text-4xl` | 2.5rem | 40px | Hero sub-headers |
+| `text-3xl` | 1.875rem | 30px | Page titles, key metrics |
+| `text-4xl` | 2.25rem | 36px | Hero sub-headers |
 | `text-5xl` | 3rem | 48px | Hero headlines (mobile) |
-| `text-6xl` | 4rem | 64px | Marketing headlines |
+| `text-6xl` | 3.75rem | 60px | Marketing headlines |
 | `text-7xl` | 4.5rem | 72px | Campaign visuals |
 
 #### 2.2.3 Line Heights
