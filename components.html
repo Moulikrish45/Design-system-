@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTern Design System v1.5.0 - Arctic Horizon</title>
+    <link rel="icon" href="Fav-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Serif:wght@400;500;600&family=Sora:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#a9203e',      // Ruby Maroon
+                            secondary: '#ff8f00',    // Arctic Amber
+                            slate: '#475569',
+                        },
+                        background: {
+                            light: '#f8f8ff',        // Ghost White
+                            dark: '#100c08',         // Premium Black
+                        },
+                        surface: {
+                            light: '#ffffff',
+                            dark: '#1c1917',
+                        },
+                        text: {
+                            main: {
+                                light: '#100c08',
+                                dark: '#f5f5f5',
+                            },
+                            muted: {
+                                light: '#666563',    // Arctic Graphite
+                                dark: '#a8a29e',
+                            }
+                        },
+                        border: {
+                            light: '#e5e5e5',
+                            dark: '#44403c',
+                        },
+                        success: '#3cd070',         // Emerald Teal
+                        warning: '#fada5e',         // Honey Gold
+                        danger: '#c41e3a',
+                        info: '#4166f5',            // Aurora Blue
+
+                        // Extended Maroon palette
+                        maroon: {
+                            950: '#320a14',
+                            900: '#430d1a',
+                            700: '#651426',
+                            600: '#76172c',
+                            500: '#a9203e',
+                            400: '#c41e3a',
+                            100: '#f3b0aa',
+                            50: '#f6e6e3',
+                        },
+
+                        // Extended Orange palette
+                        orange: {
+                            900: '#b36500',
+                            700: '#e68200',
+                            600: '#ff8f00',
+                            400: '#ffc266',
+                            100: '#fff2e5',
+                        },
+
+                        // Gray scale
+                        gray: {
+                            950: '#100c08',
+                            900: '#27221f',
+                            800: '#3d3835',
+                            600: '#666563',
+                            400: '#9fa0a1',
+                            200: '#cbc6c3',
+                            50: '#f5f5f5',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Geist', 'sans-serif'],
+                        brand: ['Manrope', 'sans-serif'],
+                        serif: ['IBM Plex Serif', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        viz: ['Sora', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'primary': '0 8px 16px -4px rgba(169, 32, 62, 0.2)',
+                        'secondary': '0 8px 16px -4px rgba(255, 143, 0, 0.2)',
+                        'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+                        'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+                        'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+                        'xl': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+                        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 300ms ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Geist', sans-serif;
+        }
+
+        .font-brand {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4d4d4;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #57534e;
+        }
+
+        /* Mobile Sidebar Transition */
+        #sidebar {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-open #sidebar {
+            transform: translateX(0);
+        }
+
+        .sidebar-closed #sidebar {
+            transform: translateX(-100%);
+        }
+
+        @media (min-width: 1024px) {
+            #sidebar {
+                transform: translateX(0) !important;
+            }
+        }
+
+        /* Active Link Styling - Glass Design */
+        .nav-link.active {
+            position: relative;
+            background: linear-gradient(90deg, rgba(169, 32, 62, 0.05), transparent);
+            border-left: 3px solid transparent;
+            border-image: linear-gradient(180deg, #a9203e, #ff8f00) 1;
+            color: #a9203e;
+            padding-left: 0.5rem;
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 60%;
+            background: linear-gradient(180deg, #a9203e, #ff8f00);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .dark .nav-link.active {
+            background: linear-gradient(90deg, rgba(255, 143, 0, 0.05), transparent);
+            border-image: linear-gradient(180deg, #ff8f00, #a9203e) 1;
+            color: #ff8f00;
+        }
+
+        .dark .nav-link.active::before {
+            background: linear-gradient(180deg, #ff8f00, #a9203e);
+        }
+
+        /* Hero Pattern */
+        .hero-pattern {
+            background-image: radial-gradient(#a9203e 1px, transparent 1px), radial-gradient(#ff8f00 1px, transparent 1px);
+            background-position: 0 0, 25px 25px;
+            background-size: 50px 50px;
+            opacity: 0.05;
+        }
+
+        .dark .hero-pattern {
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark antialiased transition-colors duration-200">
+
+    <div class="flex min-h-screen relative">
+        <!-- Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden glass transition-opacity"
+            onclick="toggleSidebar()"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar"
+            class="w-72 bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark fixed h-full overflow-y-auto transform -translate-x-full lg:translate-x-0 z-40 transition-transform duration-300 shadow-2xl lg:shadow-none">
+            <div class="p-6 border-b border-border-light dark:border-border-dark">
+                <div class="flex items-center gap-2">
+                    <img src="Fav-icon.png" alt="KTern Logo" class="w-8 h-8">
+                    <span class="font-brand font-bold text-lg">KTern.<span class="text-brand-secondary">AI</span></span>
+                </div>
+                <div class="mt-2 text-xs font-mono text-text-muted-light dark:text-text-muted-dark">
+                    System v1.5.0 <br> "Arctic Horizon"
+                </div>
+            </div>
+            <nav class="p-4 space-y-8">
+                <div>
+                    <h5
+                        class="text-xs font-bold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-3">
+                        Foundation</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#introduction"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Introduction</a>
+                        </li>
+                        <li><a href="#colors"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Color
+                                System</a></li>
+                        <li><a href="#typography"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Typography</a>
+                        </li>
+                        <li><a href="#iconography"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Iconography</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5
+                        class="text-xs font-bold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-3">
+                        Tokens</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#spacing"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Spacing
+                                & Radius</a></li>
+                        <li><a href="#shadows"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Shadows</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5
+                        class="text-xs font-bold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-3">
+                        Components</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#buttons"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Buttons</a>
+                        </li>
+                        <li><a href="#forms"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Form
+                                Controls</a></li>
+                        <li><a href="#cards"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Cards</a>
+                        </li>
+                        <li><a href="#motion"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Motion</a>
+                        </li>
+                        <li><a href="#feedback"
+                                class="nav-link block px-3 py-2 rounded-md text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-l-2 border-transparent">Feedback</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-72 p-6 lg:p-12 max-w-7xl mx-auto w-full relative">
+            <div class="absolute inset-0 hero-pattern pointer-events-none -z-10"></div>
+
+            <!-- Mobile Header / Toggle -->
+            <div
+                class="lg:hidden flex justify-between items-center mb-8 sticky top-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md py-4 z-20 border-b border-border-light dark:border-border-dark -mx-6 px-6">
+                <span class="font-brand font-bold text-lg">KTern.<span class="text-brand-secondary">AI</span></span>
+                <button onclick="toggleSidebar()" class="p-2 -mr-2 text-text-main-light dark:text-text-main-dark">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Header -->
+            <header class="mb-16 border-b border-border-light dark:border-border-dark pb-8">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-4xl font-extrabold font-sans text-brand-primary mb-4">Arctic Horizon</h1>
+                        <p class="text-xl text-text-muted-light dark:text-text-muted-dark max-w-2xl leading-relaxed">
+                            A unified design language merging enterprise-grade governance clarity with empathetic
+                            digital warmth.
+                        </p>
+                    </div>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:border-brand-primary transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block text-brand-secondary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-brand-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 1. Introduction -->
+            <section id="introduction" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    1. Core Principles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-maroon-100 flex items-center justify-center text-maroon-600 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Precision First</h3>
+                        <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Descisions rooted in
+                            technical accuracy and SAP complexity.</p>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-border-light dark:border-border-dark">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Human Centric</h3>
+                        <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Balancing robotic
+                            precision
+                            with empathetic warmth.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Colors -->
+            <section id="colors" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    2. Color System</h2>
+
+                <!-- Primary Brand -->
+                <div class="mb-12">
+                    <h3 class="text-lg font-semibold mb-4">Brand Colors</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="h-24 bg-brand-primary rounded-t-xl"></div>
+                            <div
+                                class="bg-surface-light dark:bg-surface-dark p-4 rounded-b-xl border border-t-0 border-border-light dark:border-border-dark">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold">Ruby Maroon</span>
+                                    <span class="font-mono text-xs opacity-60">#a9203e</span>
+                                </div>
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Primary Action,
+                                    Trust, Governance</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h-24 bg-brand-secondary rounded-t-xl"></div>
+                            <div
+                                class="bg-surface-light dark:bg-surface-dark p-4 rounded-b-xl border border-t-0 border-border-light dark:border-border-dark">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold">Arctic Amber</span>
+                                    <span class="font-mono text-xs opacity-60">#ff8f00</span>
+                                </div>
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Innovation, AI,
+                                    Highlights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extended Palette -->
+                <div class="mb-12">
+                    <h3 class="text-lg font-semibold mb-4">Extended Palettes</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+                        <div class="space-y-2">
+                            <div class="h-12 bg-maroon-50 rounded-md"></div>
+                            <div class="text-xs text-center font-mono">maroon-50</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 bg-maroon-100 rounded-md"></div>
+                            <div class="text-xs text-center font-mono">maroon-100</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 bg-maroon-400 rounded-md"></div>
+                            <div class="text-xs text-center font-mono">maroon-400</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 bg-maroon-600 rounded-md"></div>
+                            <div class="text-xs text-center font-mono">maroon-600</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 bg-maroon-900 rounded-md"></div>
+                            <div class="text-xs text-center font-mono">maroon-900</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semantic -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Semantic Roles</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-success"></div>
+                            <div>
+                                <p class="text-sm font-bold">Success</p>
+                                <p class="text-xs font-mono text-gray-400">#3cd070</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-warning"></div>
+                            <div>
+                                <p class="text-sm font-bold">Warning</p>
+                                <p class="text-xs font-mono text-gray-400">#fada5e</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-danger"></div>
+                            <div>
+                                <p class="text-sm font-bold">Danger</p>
+                                <p class="text-xs font-mono text-gray-400">#c41e3a</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-info"></div>
+                            <div>
+                                <p class="text-sm font-bold">Info</p>
+                                <p class="text-xs font-mono text-gray-400">#4166f5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Typography -->
+            <section id="typography" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    3. Typography</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Font Families -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Font Families</h3>
+                        <div class="space-y-6">
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark font-mono mb-2">
+                                    Primary Sans / UI</p>
+                                <p class="text-3xl font-sans font-medium text-text-main-light dark:text-text-main-dark">
+                                    Geist Sans</p>
+                                <p class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">The default
+                                    typeface for UI components, offering excellent legibility at small sizes.</p>
+                            </div>
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark font-mono mb-2">
+                                    Brand / Headings</p>
+                                <p class="text-3xl font-brand font-extrabold text-brand-primary">Manrope</p>
+                                <p class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">Used for
+                                    major headings and marketing content to convey modern professionalism.</p>
+                            </div>
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark font-mono mb-2">
+                                    Editorial / Quotes</p>
+                                <p class="text-3xl font-serif italic text-text-main-light dark:text-text-main-dark">
+                                    IBM Plex Serif</p>
+                                <p class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">Adds human
+                                    warmth to pull quotes and long-form editorial content.</p>
+                            </div>
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark font-mono mb-2">
+                                    Code / Data</p>
+                                <p class="text-3xl font-mono text-text-main-light dark:text-text-main-dark">
+                                    JetBrains Mono</p>
+                                <p class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">Optimized
+                                    for reading code snippets and dense tabular data.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Type Scale -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Type Scale (Rem-First)</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-baseline gap-4">
+                                <span class="text-xs font-mono text-text-muted-light w-12">H1</span>
+                                <div>
+                                    <h1 class="text-5xl md:text-6xl font-brand font-extrabold tracking-tight">
+                                        Display Heading</h1>
+                                    <p class="text-xs font-mono text-text-muted-light mt-1">text-6xl / 3.75rem /
+                                        Manrope 800</p>
+                                </div>
+                            </div>
+                            <div class="flex items-baseline gap-4">
+                                <span class="text-xs font-mono text-text-muted-light w-12">H2</span>
+                                <div>
+                                    <h2 class="text-4xl md:text-5xl font-brand font-bold tracking-tight">Section
+                                        Heading</h2>
+                                    <p class="text-xs font-mono text-text-muted-light mt-1">text-5xl / 3rem /
+                                        Manrope 700</p>
+                                </div>
+                            </div>
+                            <div class="flex items-baseline gap-4">
+                                <span class="text-xs font-mono text-text-muted-light w-12">H3</span>
+                                <div>
+                                    <h3 class="text-3xl font-brand font-bold text-brand-primary">Component Title
+                                    </h3>
+                                    <p class="text-xs font-mono text-text-muted-light mt-1">text-3xl / 1.875rem /
+                                        Manrope 700</p>
+                                </div>
+                            </div>
+                            <div class="flex items-baseline gap-4">
+                                <span class="text-xs font-mono text-text-muted-light w-12">Body</span>
+                                <div>
+                                    <p class="text-base text-text-main-light dark:text-text-main-dark leading-relaxed">
+                                        Standard body text designed for optimal readability. The line height is set
+                                        to allow comfortable reading over long periods.
+                                    </p>
+                                    <p class="text-xs font-mono text-text-muted-light mt-1">text-base / 1rem / Geist
+                                        400</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Iconography -->
+            <section id="iconography" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    4. Iconography</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Icon Grid -->
+                    <div
+                        class="flex-1 bg-surface-light dark:bg-surface-dark p-8 rounded-xl border border-border-light dark:border-border-dark">
+                        <h3 class="text-lg font-semibold mb-6">System Icons (24px Grid)</h3>
+                        <div class="grid grid-cols-6 gap-6 text-text-muted-light dark:text-text-muted-dark">
+                            <!-- Example SVGs representing generic system icons -->
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                </path>
+                            </svg>
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                                </path>
+                            </svg>
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                </path>
+                            </svg>
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                            <svg class="w-6 h-6 hover:text-brand-primary transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Tokens -->
+            <section id="spacing" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    5. Design Tokens</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Spacing -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Spacing System (4px Base)</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-4 h-4 bg-maroon-200"></div>
+                                <span class="text-sm font-mono">space-1 (0.25rem/4px)</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-4 bg-maroon-300"></div>
+                                <span class="text-sm font-mono">space-2 (0.5rem/8px)</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-4 bg-maroon-400"></div>
+                                <span class="text-sm font-mono">space-4 (1rem/16px)</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-32 h-4 bg-maroon-500"></div>
+                                <span class="text-sm font-mono">space-8 (2rem/32px)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shadows -->
+                    <div id="shadows">
+                        <h3 class="text-lg font-semibold mb-6">Shadows & Elevation</h3>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-sm text-center">
+                                <span class="text-sm font-bold">Shadow SM</span>
+                            </div>
+                            <div class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-md text-center">
+                                <span class="text-sm font-bold">Shadow MD</span>
+                            </div>
+                            <div class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-lg text-center">
+                                <span class="text-sm font-bold">Shadow LG</span>
+                            </div>
+                            <div class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-xl text-center">
+                                <span class="text-sm font-bold">Shadow XL</span>
+                            </div>
+                            <!-- Brand Shadows -->
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-primary text-center border border-brand-primary/10">
+                                <span class="text-sm font-bold text-brand-primary">Brand Primary</span>
+                            </div>
+                            <div
+                                class="p-6 bg-surface-light dark:bg-surface-dark rounded-lg shadow-secondary text-center border border-brand-secondary/10">
+                                <span class="text-sm font-bold text-brand-secondary">Brand Secondary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 6. Components: Buttons -->
+            <section id="buttons" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    6. Buttons</h2>
+
+                <div class="space-y-12">
+                    <!-- Function Definitions -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Tern Hero Button (New) -->
+                        <div class="col-span-1 md:col-span-2 space-y-4">
+                            <h3 class="text-lg font-semibold">Tern Hero Action (New Standard)</h3>
+                            <div
+                                class="p-12 bg-gray-50 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark flex flex-wrap gap-8 items-center justify-center">
+                                <!-- Tern Button Implementation -->
+                                <button
+                                    class="group relative inline-block focus:outline-none focus:ring-4 focus:ring-brand-primary/50 rounded-tl-[2rem] rounded-br-[2rem]">
+                                    <div
+                                        class="absolute inset-0 transition-transform duration-300 ease-out transform group-hover:scale-105 group-hover:shadow-lg group-active:scale-95 rounded-tl-[2rem] rounded-br-[2rem] bg-gradient-to-br from-[#9b1c2c] via-[#d94e28] to-[#ff8f00]">
+                                    </div>
+                                    <div
+                                        class="relative m-[2px] flex items-center justify-center gap-2 bg-white dark:bg-[#1a1a1a] px-8 py-3.5 rounded-tl-[calc(2rem-2px)] rounded-br-[calc(2rem-2px)] transition-all duration-300 ease-out group-hover:bg-opacity-90 dark:group-hover:bg-opacity-90">
+                                        <span class="text-lg font-bold text-brand-primary dark:text-white">Get
+                                            Started</span>
+                                    </div>
+                                </button>
+                            </div>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">
+                                The signature "Tern Wing" shape with gradient border, used for primary conversion
+                                points. Text is solid <strong class="text-brand-primary">Brand Primary</strong> (or
+                                White in dark mode).
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold">Standard Primary & Energy</h3>
+                            <div
+                                class="p-8 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark flex flex-wrap gap-4 items-center">
+                                <!-- Primary -->
+                                <button
+                                    class="px-6 py-2.5 bg-brand-primary hover:bg-maroon-600 text-white font-brand font-semibold rounded-lg shadow-primary hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                                    Primary Action
+                                </button>
+                                <!-- Energy -->
+                                <button
+                                    class="relative px-6 py-2.5 bg-brand-secondary hover:bg-orange-500 text-white font-brand font-semibold rounded-lg shadow-secondary hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                                    <span class="relative z-10 flex items-center gap-2">
+                                        Energy Action
+                                        <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <div
+                                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                    </div>
+                                </button>
+                            </div>
+                            <p class="text-sm text-text-muted-light dark:text-text-muted-dark">
+                                <strong class="text-brand-primary">Primary:</strong> Main call-to-action on a page.
+                                <br>
+                                <strong class="text-brand-secondary">Energy:</strong> Special high-value AI feature
+                                triggers.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold">Secondary & Ghost</h3>
+                            <div
+                                class="p-8 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark flex flex-wrap gap-4 items-center">
+                                <!-- Secondary -->
+                                <button
+                                    class="px-6 py-2.5 bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-brand font-semibold rounded-lg transition-all duration-300">
+                                    Secondary
+                                </button>
+                                <!-- Ghost -->
+                                <button
+                                    class="px-6 py-2.5 text-text-muted-light dark:text-text-muted-dark hover:text-brand-primary font-brand font-medium rounded-lg hover:bg-maroon-50 dark:hover:bg-maroon-900/20 transition-all duration-200">
+                                    Ghost / Cancel
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold">Destructive</h3>
+                            <div
+                                class="p-8 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark flex flex-wrap gap-4 items-center">
+                                <button
+                                    class="px-6 py-2.5 bg-danger text-white font-brand font-semibold rounded-lg shadow-md hover:bg-red-700 transition-colors">
+                                    Delete Item
+                                </button>
+                                <button
+                                    class="px-6 py-2.5 text-danger font-brand font-medium border border-danger/30 rounded-lg hover:bg-danger/10 transition-colors">
+                                    Cancel Subscription
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Form Controls -->
+            <section id="forms" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    7. Form Controls</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <!-- Text Input -->
+                        <div>
+                            <label
+                                class="block text-sm font-brand font-medium text-text-main-light dark:text-text-main-dark mb-2">Email
+                                Address</label>
+                            <input type="email" placeholder="name@company.com"
+                                class="w-full px-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-text-main-light dark:text-text-main-dark focus:outline-none focus:ring-2 focus:ring-maroon-100 focus:border-brand-primary transition-shadow placeholder-gray-400">
+                        </div>
+
+                        <!-- Custom Dropdown (Glass-Morphism) -->
+                        <!-- Custom Dropdown (Clean Brand-Aligned) -->
+                        <div class="relative" x-data="{ open: false }">
+                            <label
+                                class="block text-sm font-brand font-medium text-text-main-light dark:text-text-main-dark mb-2">Project
+                                Role</label>
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.dropdown-menu').classList.toggle('hidden')"
+                                class="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-border-light dark:border-border-dark rounded-xl text-left text-text-main-light dark:text-text-main-dark focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary transition-all duration-200 flex justify-between items-center group shadow-sm hover:border-brand-primary/50">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-brand-primary"></div>
+                                    <span class="font-medium">Editor</span>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-brand-primary transition-colors duration-200"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="dropdown-menu hidden absolute z-20 w-full mt-2 bg-white dark:bg-gray-900 border border-border-light dark:border-border-dark rounded-xl shadow-xl overflow-hidden animate-fade-in-up">
+                                <div class="p-1.5 space-y-1">
+                                    <!-- Item 1 -->
+                                    <button
+                                        class="w-full px-3 py-2.5 text-left text-sm rounded-lg text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <span>Viewer</span>
+                                        </div>
+                                    </button>
+
+                                    <!-- Item 2 (Selected) -->
+                                    <button
+                                        class="w-full px-3 py-2.5 text-left text-sm rounded-lg bg-brand-primary/5 text-brand-primary font-semibold flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span>Editor</span>
+                                        </div>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Item 3 -->
+                                    <button
+                                        class="w-full px-3 py-2.5 text-left text-sm rounded-lg text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-between group">
+                                        <div class="flex items-center gap-3">
+                                            <span>Admin</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input with Icon -->
+                        <div>
+                            <label
+                                class="block text-sm font-brand font-medium text-text-main-light dark:text-text-main-dark mb-2">Search</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-gray-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </span>
+                                <input type="text" placeholder="Search knowledge base..."
+                                    class="w-full pl-12 pr-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-text-main-light dark:text-text-main-dark focus:outline-none focus:ring-2 focus:ring-maroon-100 focus:border-brand-primary transition-shadow">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Toggles & Checks -->
+                        <div>
+                            <h3
+                                class="text-sm font-semibold text-text-muted-light mb-4 text-transform uppercase tracking-wider">
+                                Selection Controls</h3>
+
+                            <!-- Toggle Switch (Glass + Gradient) -->
+                            <div
+                                class="flex items-center justify-between p-4 border border-border-light dark:border-border-dark rounded-lg mb-4 backdrop-blur-sm bg-white/50 dark:bg-gray-900/50">
+                                <span class="text-sm font-medium">Enable AI Insights</span>
+                                <label class="relative inline-flex items-center cursor-pointer group">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <!-- Track -->
+                                    <div class="w-14 h-7 rounded-full transition-all duration-300 ease-out
+                                        bg-gray-200/80 dark:bg-gray-700/80
+                                        peer-checked:bg-gradient-to-r peer-checked:from-[#a9203e] peer-checked:to-[#ff8f00]
+                                        peer-focus:ring-4 peer-focus:ring-brand-primary/20
+                                        backdrop-blur-sm
+                                        shadow-inner">
+                                    </div>
+                                    <!-- Knob -->
+                                    <div class="absolute left-1 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full
+                                        bg-white shadow-lg
+                                        transition-all duration-300 ease-out
+                                        peer-checked:translate-x-7
+                                        peer-checked:shadow-md peer-checked:shadow-brand-primary/30
+                                        group-hover:scale-110">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="relative flex items-center">
+                                    <input type="checkbox" checked
+                                        class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 shadow-sm checked:bg-brand-primary checked:border-brand-primary focus:ring-2 focus:ring-maroon-100 transition-all">
+                                    <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 text-white"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-text-main-light dark:text-text-main-dark">I agree to the
+                                    <a href="#" class="text-brand-primary hover:underline">Terms of
+                                        Service</a></span>
+                            </div>
+
+                            <!-- Radio -->
+                            <div class="flex items-center gap-3">
+                                <div class="relative flex items-center">
+                                    <input type="radio" name="plan" checked
+                                        class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-gray-300 shadow-sm checked:border-brand-primary checked:before:bg-brand-primary focus:ring-2 focus:ring-maroon-100 transition-all before:content-[''] before:block before:w-2.5 before:h-2.5 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:opacity-0 checked:before:opacity-100">
+                                </div>
+                                <span class="text-sm text-text-main-light dark:text-text-main-dark">Enterprise
+                                    Plan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 8. Cards & Containers -->
+            <section id="cards" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    8. Cards & Containers</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project Card (Clean Design from v3Ktern) -->
+                    <div
+                        class="bg-white dark:bg-[#1c1917] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg text-brand-primary">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs px-2 py-1 rounded font-medium">Active</span>
+                        </div>
+                        <h5 class="font-bold text-brand-slate dark:text-gray-200 mb-1">Project Atlas</h5>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">S/4HANA Migration - Phase 2</p>
+                        <div class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-brand-primary h-full rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Standard Metric Card -->
+                    <div
+                        class="p-6 bg-white dark:bg-[#1c1917] rounded-xl border border-gray-200 dark:border-[#44403c] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p
+                                    class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                    Total Savings</p>
+                                <h4 class="text-3xl font-brand font-bold text-brand-slate dark:text-gray-200 mt-1">
+                                    $2.4M</h4>
+                            </div>
+                            <span
+                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/10 text-success">
+                                +12.5%
+                            </span>
+                        </div>
+                        <div class="h-12 w-full bg-gray-50 dark:bg-gray-800 rounded flex items-end overflow-hidden">
+                            <!-- Fake Sparkline -->
+                            <div class="w-1/5 h-2 bg-success/30"></div>
+                            <div class="w-1/5 h-4 bg-success/40"></div>
+                            <div class="w-1/5 h-3 bg-success/50"></div>
+                            <div class="w-1/5 h-6 bg-success/60"></div>
+                            <div class="w-1/5 h-8 bg-success"></div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insight Card (Special) -->
+                    <div
+                        class="relative p-6 bg-white dark:bg-[#1c1917] rounded-xl border border-brand-secondary/30 shadow-sm overflow-hidden group hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brand-secondary/10 rounded-bl-full -mr-8 -mt-8">
+                        </div>
+                        <div class="relative z-10 flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/20 flex-shrink-0 flex items-center justify-center text-orange-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-1">
+                                    Optimization Opportunity</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                    Consolidating 3 license types could save <strong>$145k/year</strong>.
+                                </p>
+                                <button
+                                    class="text-sm font-semibold text-brand-secondary hover:text-orange-600 flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Review Projection <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Widget Card -->
+                    <div
+                        class="p-6 bg-white dark:bg-[#1c1917] rounded-xl border border-gray-200 dark:border-[#44403c] border-dashed flex flex-col justify-center items-center text-center hover:border-brand-primary/50 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300 cursor-pointer">
+                        <div
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-3 text-gray-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-brand-slate dark:text-gray-200">Add Widget</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Customize your dashboard layout</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Motion System -->
+            <section id="motion" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    9. Motion System</h2>
+
+                <!-- Micro-interactions -->
+                <div class="mb-16">
+                    <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Micro-interactions
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Hover Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Hover State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Interactive</span>
+                            </div>
+                            <div class="space-y-4">
+                                <button
+                                    class="w-full py-2.5 px-4 bg-brand-primary text-white rounded-lg hover:opacity-90 transition-opacity duration-200 text-sm font-medium">
+                                    Hover Me
+                                </button>
+                                <div class="text-xs text-gray-400">Subtle opacity shift</div>
+                            </div>
+                        </div>
+
+                        <!-- Focus Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Focus State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Input</span>
+                            </div>
+                            <div class="space-y-4">
+                                <input type="text"
+                                    class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-[#44403c] bg-white dark:bg-[#0c0a09] text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-brand-secondary/50 focus:border-brand-secondary outline-none transition-all duration-200"
+                                    placeholder="Click me">
+                                <div class="text-xs text-gray-400">Ring & border highlight</div>
+                            </div>
+                        </div>
+
+                        <!-- Loading Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Loading State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Status</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-2">
+                                    <div
+                                        class="w-6 h-6 border-2 border-brand-secondary/20 border-t-brand-secondary rounded-full animate-spin">
+                                    </div>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Processing...</span>
+                                </div>
+                                <div class="text-xs text-gray-400">Infinite rotation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Border Radius & Shape Language -->
+                <div class="mb-16">
+                    <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Border Radius & Shape Language
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Buttons/Inputs -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-brand-primary rounded-md flex items-center justify-center text-white text-sm font-medium">
+                                    Button / Input
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">6px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Buttons, inputs, badges</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-md</p>
+                        </div>
+
+                        <!-- Cards -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-brand-secondary/20 rounded-xl flex items-center justify-center text-brand-primary text-sm font-medium border border-brand-secondary/30">
+                                    Card Container
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">12px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Cards, panels, containers</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-xl</p>
+                        </div>
+
+                        <!-- Modals -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-white dark:bg-[#0c0a09] rounded-2xl flex items-center justify-center text-brand-slate dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-[#44403c]">
+                                    Modal Dialog
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">16px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Modals, overlays, popovers</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-2xl</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animation Principles -->
+                <div class="bg-brand-primary/5 dark:bg-brand-primary/10 border border-brand-primary/20 rounded-xl p-8">
+                    <h5 class="text-lg font-bold text-brand-primary mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Animation Principles
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h6 class="text-sm font-semibold text-brand-primary mb-3">✓ Do</h6>
+                            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Use 200-300ms eased transitions for smooth, professional feel</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Apply subtle opacity and position shifts for micro-interactions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Maintain consistent border radius across component types</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Use cubic-bezier for natural, aerodynamic motion</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h6 class="text-sm font-semibold text-brand-primary mb-3">✗ Don't</h6>
+                            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>No bouncy or spring animations (not enterprise-appropriate)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Avoid off-screen fly-ins or dramatic entrances</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Don't mix different radius values in the same component</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Never use fully rounded (pill-shaped) buttons</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. Feedback Components -->
+            <section id="feedback" class="mb-24 scroll-mt-24">
+                <h2
+                    class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+                    10. Feedback</h2>
+
+                <div class="space-y-8">
+                    <!-- Alerts -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div
+                            class="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-success/20 flex gap-3 text-success">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div class="text-sm font-medium">Waitlist joined successfully! We'll be in touch.</div>
+                        </div>
+                        <div
+                            class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-danger/20 flex gap-3 text-danger">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div class="text-sm font-medium">Connection failed. Please check your SAP credentials.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal & Overlay Preview (Glass-Morphism) -->
+                    <div
+                        class="relative bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border border-border-light dark:border-border-dark min-h-[320px] flex items-center justify-center overflow-hidden">
+                        <!-- Backdrop -->
+                        <div class="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
+
+                        <!-- Modal Container -->
+                        <div
+                            class="relative backdrop-blur-md bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden transform scale-100 animate-fade-in-up">
+                            <!-- Gradient Top Border -->
+                            <div class="h-1 w-full bg-gradient-to-r from-[#a9203e] via-[#d94e28] to-[#ff8f00]"></div>
+
+                            <!-- Header -->
+                            <div class="flex items-center justify-between p-5">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-brand-primary" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-brand-primary">Confirm Analysis</h3>
+                                </div>
+                                <!-- Glass Close Button -->
+                                <button
+                                    class="w-8 h-8 rounded-full backdrop-blur-sm bg-gray-100/80 dark:bg-gray-800/80 flex items-center justify-center text-gray-500 hover:text-brand-primary hover:bg-brand-primary/10 transition-all duration-200 group">
+                                    <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-90"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="px-5 pb-5">
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-6">
+                                    Running this simulation will consume <span
+                                        class="font-semibold text-brand-secondary">50 AI
+                                        credits</span>.
+                                    The analysis typically takes 2-3 minutes. Do you want to proceed?
+                                </p>
+
+                                <!-- Actions -->
+                                <div class="flex justify-end gap-3">
+                                    <!-- Ghost Cancel -->
+                                    <button
+                                        class="px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
+                                        Cancel
+                                    </button>
+                                    <!-- Gradient Border Button (Different from Tern Hero) -->
+                                    <button
+                                        class="relative px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-primary to-brand-secondary rounded-xl shadow-lg shadow-brand-primary/25 hover:shadow-xl hover:shadow-brand-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+                                        Run Analysis
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer
+                class="mt-24 pt-8 border-t border-border-light dark:border-border-dark text-center text-xs text-text-muted-light dark:text-text-muted-dark font-mono">
+                KTern.AI Design System v1.5.0 • Arctic Horizon • Internal Use Only
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle (Existing)
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (localStorage.getItem('theme') === 'dark') { html.classList.add('dark'); }
+
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full'); // Open
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full'); // Close
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Auto Close on Link Click (Mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) toggleSidebar();
+            });
+        });
+
+        // Scroll Spy active state
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+```

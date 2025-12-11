@@ -1,0 +1,279 @@
+<!-- ================= SHADOWS & ELEVATION ================= -->
+
+<section id="shadows" class="mb-24 scroll-mt-24">
+    <h2
+        class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+        Shadows & Elevation</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Shadow SM -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="mb-4 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm flex items-center justify-center">
+                <span class="text-sm font-mono text-text-muted-light">shadow-sm</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-sm</div>
+                <div class="text-xs text-text-muted-light">Subtle depth for cards at rest</div>
+            </div>
+        </div>
+
+        <!-- Shadow MD -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="mb-4 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md flex items-center justify-center">
+                <span class="text-sm font-mono text-text-muted-light">shadow-md</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-md</div>
+                <div class="text-xs text-text-muted-light">Default card elevation</div>
+            </div>
+        </div>
+
+        <!-- Shadow LG -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="mb-4 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-lg flex items-center justify-center">
+                <span class="text-sm font-mono text-text-muted-light">shadow-lg</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-lg</div>
+                <div class="text-xs text-text-muted-light">Hover state, dropdowns</div>
+            </div>
+        </div>
+
+        <!-- Shadow XL -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="mb-4 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-xl flex items-center justify-center">
+                <span class="text-sm font-mono text-text-muted-light">shadow-xl</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-xl</div>
+                <div class="text-xs text-text-muted-light">Modals, popovers</div>
+            </div>
+        </div>
+
+        <!-- Shadow 2XL -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="mb-4 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-2xl flex items-center justify-center">
+                <span class="text-sm font-mono text-text-muted-light">shadow-2xl</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-2xl</div>
+                <div class="text-xs text-text-muted-light">Maximum elevation</div>
+            </div>
+        </div>
+
+        <!-- Brand Shadow -->
+        <div
+            class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div
+                class="mb-4 p-8 bg-brand-primary text-white rounded-lg shadow-lg shadow-brand-primary/20 flex items-center justify-center">
+                <span class="text-sm font-mono">Brand Shadow</span>
+            </div>
+            <div class="space-y-1">
+                <div class="text-xs font-mono text-brand-primary">shadow-brand-primary</div>
+                <div class="text-xs text-text-muted-light">Primary CTA buttons</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Example -->
+    <div class="mt-8">
+        <h3 class="text-lg font-bold mb-4">Interactive Elevation</h3>
+        <div
+            class="p-8 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="flex flex-wrap gap-6 justify-center">
+                <div
+                    class="p-6 bg-white dark:bg-gray-900 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-sm font-mono text-center">Hover Me</div>
+                    <div class="text-xs text-text-muted-light text-center mt-2">sm → lg</div>
+                </div>
+                <div
+                    class="p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                    <div class="text-sm font-mono text-center">Hover Me</div>
+                    <div class="text-xs text-text-muted-light text-center mt-2">md → xl</div>
+                </div>
+                <div
+                    class="p-6 bg-brand-primary text-white rounded-xl shadow-lg shadow-brand-primary/20 hover:shadow-xl hover:shadow-brand-primary/30 transition-all duration-300 cursor-pointer">
+                    <div class="text-sm font-mono text-center">Hover Me</div>
+                    <div class="text-xs text-white/80 text-center mt-2">Brand Shadow</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= MOTION & TIMING ================= -->
+
+<section id="motion" class="mb-24 scroll-mt-24">
+    <h2
+        class="text-2xl font-bold font-sans text-brand-primary mb-8 pb-2 border-b border-border-light dark:border-border-dark">
+        Motion & Timing</h2>
+
+    <!-- Duration Tokens -->
+    <div class="mb-8">
+        <h3 class="text-lg font-bold mb-4">Duration Tokens</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-mono text-brand-primary">duration-instant</span>
+                    <span class="text-xs text-text-muted-light">100ms</span>
+                </div>
+                <div class="text-xs text-text-muted-light">Quick feedback (hover)</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-mono text-brand-primary">duration-fast</span>
+                    <span class="text-xs text-text-muted-light">200ms</span>
+                </div>
+                <div class="text-xs text-text-muted-light">Standard transitions</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-mono text-brand-primary">duration-normal</span>
+                    <span class="text-xs text-text-muted-light">300ms</span>
+                </div>
+                <div class="text-xs text-text-muted-light">Default animations</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-mono text-brand-primary">duration-slow</span>
+                    <span class="text-xs text-text-muted-light">400ms</span>
+                </div>
+                <div class="text-xs text-text-muted-light">Large movements (modals)</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-mono text-brand-primary">duration-slower</span>
+                    <span class="text-xs text-text-muted-light">600ms</span>
+                </div>
+                <div class="text-xs text-text-muted-light">Page transitions</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easing Functions -->
+    <div class="mb-8">
+        <h3 class="text-lg font-bold mb-4">Easing Functions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="text-sm font-mono text-brand-primary mb-2">ease-in-out</div>
+                <div class="text-xs text-text-muted-light mb-3">cubic-bezier(0.4, 0, 0.2, 1)</div>
+                <div class="text-xs text-text-muted-light">Natural motion for most interactions</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="text-sm font-mono text-brand-primary mb-2">ease-out</div>
+                <div class="text-xs text-text-muted-light mb-3">cubic-bezier(0, 0, 0.2, 1)</div>
+                <div class="text-xs text-text-muted-light">Entrance animations</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="text-sm font-mono text-brand-primary mb-2">ease-in</div>
+                <div class="text-xs text-text-muted-light mb-3">cubic-bezier(0.4, 0, 1, 1)</div>
+                <div class="text-xs text-text-muted-light">Exit animations</div>
+            </div>
+            <div
+                class="p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+                <div class="text-sm font-mono text-brand-primary mb-2">ease-tern</div>
+                <div class="text-xs text-text-muted-light mb-3">cubic-bezier(0.2, 0, 0.38, 0.9)</div>
+                <div class="text-xs text-text-muted-light">Arctic Tern signature (fast start, smooth landing)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Examples -->
+    <div>
+        <h3 class="text-lg font-bold mb-4">Interactive Examples</h3>
+        <div
+            class="p-8 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Fade + Scale -->
+                <div class="text-center">
+                    <div
+                        class="mb-3 p-6 bg-brand-primary/10 rounded-xl hover:bg-brand-primary hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <div class="text-sm font-mono text-brand-primary hover:text-white transition-colors">Fade +
+                            Scale</div>
+                    </div>
+                    <div class="text-xs text-text-muted-light">300ms ease-in-out</div>
+                </div>
+
+                <!-- Slide Up -->
+                <div class="text-center">
+                    <div
+                        class="mb-3 p-6 bg-brand-secondary/10 rounded-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                        <div class="text-sm font-mono text-brand-secondary">Slide Up</div>
+                    </div>
+                    <div class="text-xs text-text-muted-light">300ms ease-out</div>
+                </div>
+
+                <!-- Rotate -->
+                <div class="text-center">
+                    <div
+                        class="mb-3 p-6 bg-success/10 rounded-xl hover:rotate-6 transition-transform duration-300 cursor-pointer">
+                        <div class="text-sm font-mono text-success">Rotate</div>
+                    </div>
+                    <div class="text-xs text-text-muted-light">300ms ease-tern</div>
+                </div>
+
+                <!-- Border Grow -->
+                <div class="text-center">
+                    <div
+                        class="mb-3 p-6 bg-white dark:bg-gray-900 rounded-xl border-2 border-border-light dark:border-border-dark hover:border-brand-primary transition-colors duration-200 cursor-pointer">
+                        <div class="text-sm font-mono text-text-main-light dark:text-text-main-dark">Border</div>
+                    </div>
+                    <div class="text-xs text-text-muted-light">200ms instant</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Principles -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-success/5 border border-success/20 rounded-xl">
+            <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                    <div class="font-bold text-sm mb-2">Do</div>
+                    <ul class="text-xs text-text-muted-light space-y-1">
+                        <li>• Use 200-300ms for standard interactions</li>
+                        <li>• Apply ease-tern for signature brand feel</li>
+                        <li>• Animate opacity + transform together</li>
+                        <li>• Respect prefers-reduced-motion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 bg-error/5 border border-error/20 rounded-xl">
+            <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-error flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+                <div>
+                    <div class="font-bold text-sm mb-2">Don't</div>
+                    <ul class="text-xs text-text-muted-light space-y-1">
+                        <li>• No "bouncy" or spring animations</li>
+                        <li>• Avoid off-screen fly-ins</li>
+                        <li>• Never animate width/height directly</li>
+                        <li>• Don't exceed 600ms duration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

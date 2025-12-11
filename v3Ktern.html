@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ktern Brand Guidelines</title>
+    <link rel="icon" href="Fav-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#a9203e',      // Ruby Maroon
+                            secondary: '#ff8f00',    // Arctic Amber
+                            slate: '#475569',
+                        },
+                        background: {
+                            light: '#f8f8ff',        // Ghost White
+                            dark: '#100c08',         // Premium Black
+                        },
+                        surface: {
+                            light: '#ffffff',
+                            dark: '#1c1917',
+                        },
+                        text: {
+                            main: {
+                                light: '#100c08',
+                                dark: '#f5f5f5',
+                            },
+                            muted: {
+                                light: '#666563',    // Arctic Graphite
+                                dark: '#a8a29e',
+                            }
+                        },
+                        border: {
+                            light: '#e5e5e5',
+                            dark: '#44403c',
+                        },
+                        success: '#3cd070',         // Emerald Teal
+                        warning: '#fada5e',         // Honey Gold
+                        danger: '#c41e3a',
+                        info: '#4166f5',            // Aurora Blue
+
+                        // Extended Maroon palette
+                        maroon: {
+                            950: '#320a14',
+                            900: '#430d1a',
+                            700: '#651426',
+                            600: '#76172c',
+                            500: '#a9203e',
+                            400: '#c41e3a',
+                            100: '#f3b0aa',
+                            50: '#f6e6e3',
+                        },
+
+                        // Extended Orange palette
+                        orange: {
+                            900: '#b36500',
+                            700: '#e68200',
+                            600: '#ff8f00',
+                            400: '#ffc266',
+                            100: '#fff2e5',
+                        },
+
+                        // Gray scale
+                        gray: {
+                            950: '#100c08',
+                            900: '#27221f',
+                            800: '#3d3835',
+                            600: '#666563',
+                            400: '#9fa0a1',
+                            200: '#cbc6c3',
+                            50: '#f5f5f5',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Geist', 'sans-serif'],
+                        brand: ['Manrope', 'sans-serif'],
+                        serif: ['IBM Plex Serif', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        viz: ['Sora', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'primary': '0 8px 16px -4px rgba(169, 32, 62, 0.2)',
+                        'secondary': '0 8px 16px -4px rgba(255, 143, 0, 0.2)',
+                        'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+                        'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+                        'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+                        'xl': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+                        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 300ms ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'collision-1': 'collision-1 20s ease-in-out infinite',
+                        'collision-2': 'collision-2 25s ease-in-out infinite',
+                        'gradient-shift-slow': 'gradient-shift 5s ease infinite', // Keeping existing custom anims too
+                        'gradient-shift-slower': 'gradient-shift 10s ease infinite',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(20px)',
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)',
+                            },
+                        },
+                        'float': {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' }
+                        },
+                        // Defining collision keyframes in CSS mostly, but we can add them here if we want them as tailwind utilities. 
+                        // For now, keeping the block clean and relying on existing CSS for complex multi-step keyframes if they are not standard utilities.
+                        // But wait, the task is to be EXACT. The provided config in section 7.1.2 doesn't have float/collision, but the current file DOES.
+                        // I will merge them carefully.
+                    },
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Serif:wght@400;500;600&family=Sora:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Geist', sans-serif;
+        }
+
+        .font-brand {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .hero-gradient {
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .hero-gradient {
+            background: #1a1a1a;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 143, 0, 0.15) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.1);
+        }
+
+        .dark .glass-card {
+            background: rgba(28, 25, 23, 0.95);
+        }
+
+        .stream-line {
+            position: absolute;
+            height: 2px;
+            background: #E2E8F0;
+            top: 50%;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .stream-active {
+            background: #ff8f00;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Collision Animation 1 */
+        @keyframes collision-1 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            15% {
+                transform: translate(120px, -80px);
+            }
+
+            30% {
+                transform: translate(200px, 40px);
+            }
+
+            45% {
+                transform: translate(80px, 120px);
+            }
+
+            60% {
+                transform: translate(-100px, 90px);
+            }
+
+            75% {
+                transform: translate(-150px, -60px);
+            }
+
+            90% {
+                transform: translate(-50px, -100px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* Collision Animation 2 */
+        @keyframes collision-2 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            12% {
+                transform: translate(-90px, 110px);
+            }
+
+            28% {
+                transform: translate(-180px, -50px);
+            }
+
+            42% {
+                transform: translate(-60px, -130px);
+            }
+
+            58% {
+                transform: translate(100px, -90px);
+            }
+
+            72% {
+                transform: translate(170px, 30px);
+            }
+
+            88% {
+                transform: translate(50px, 100px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .animate-collision-1 {
+            animation: collision-1 20s ease-in-out infinite;
+        }
+
+        .animate-collision-2 {
+            animation: collision-2 25s ease-in-out infinite;
+        }
+
+        /* Animated Gradient */
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(90deg, #a9203e 0%, #d94e28 50%, #ff8f00 100%);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        .dark .animated-gradient {
+            background: linear-gradient(90deg, #e04060 0%, #ff7a45 50%, #ffc04d 100%);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 10s ease infinite;
+        }
+
+        /* Blur overlay for mobile menu */
+        .blur-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 40;
+            transition: opacity 0.3s ease;
+        }
+
+        .blur-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Dark mode secondary color override */
+        .dark .text-brand-secondary {
+            color: #ff8f00 !important;
+        }
+
+        .dark .bg-brand-secondary {
+            background-color: #ff8f00 !important;
+        }
+
+        .dark .border-brand-secondary {
+            border-color: #ff8f00 !important;
+        }
+
+        .dark .ring-brand-secondary {
+            --tw-ring-color: #ff8f00 !important;
+        }
+
+        /* Dark mode primary color override */
+        .dark .text-brand-primary {
+            color: #c41e3a !important;
+        }
+
+        .dark .bg-brand-primary {
+            background-color: #c41e3a !important;
+        }
+
+        .dark .border-brand-primary {
+            border-color: #c41e3a !important;
+        }
+
+        .dark .ring-brand-primary {
+            --tw-ring-color: #c41e3a !important;
+        }
+
+        /* Tertiary Link Gradient */
+        .tertiary-link {
+            background: linear-gradient(90deg, #a9203e, #ff8f00);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-position: 0% 50%;
+            transition: background-position 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tertiary-link:hover {
+            background: linear-gradient(90deg, #ff8f00, #a9203e, #ff8f00);
+            background-size: 200% 100%;
+            background-position: 100% 50%;
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-[#1a1a1a] text-[#0c0a09] dark:text-white antialiased transition-colors duration-200">
+
+    <!-- Blur Overlay for Mobile Menu -->
+    <div id="blur-overlay" class="blur-overlay hidden"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-md border-b border-gray-200 dark:border-[#333333] z-50 transition-colors duration-200">
+        <!-- Gradient Outline -->
+        <div class="h-[1px] w-full bg-gradient-to-r from-brand-secondary/30 via-brand-secondary to-brand-secondary/30">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <!-- Logo / Brand Name -->
+                    <div class="flex items-center gap-1"><img src="Fav-icon.png" alt="KTern Logo" class="w-8 h-8"></div>
+                    <div>
+                        <p class="font-brand font-bold text-brand-text text-lg">KTern.<span
+                                class="text-brand-secondary">AI</span></p>
+                    </div>
+                </div>
+
+                <!-- Desktop navigation -->
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-brand-slate dark:text-white">
+                    <a href="#brand"
+                        class="hover:text-brand-primary dark:hover:text-brand-secondary transition-colors">Brand</a>
+                    <a href="#colors"
+                        class="hover:text-brand-primary dark:hover:text-brand-secondary transition-colors">Colors</a>
+                    <a href="#typography"
+                        class="hover:text-brand-primary dark:hover:text-brand-secondary transition-colors">Typography</a>
+                    <a href="#components"
+                        class="hover:text-brand-primary dark:hover:text-brand-secondary transition-colors">Components</a>
+                    <a href="#streams"
+                        class="hover:text-brand-primary dark:hover:text-brand-secondary transition-colors">Streams</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-brand-secondary/10 dark:hover:bg-brand-secondary/20 transition-all group">
+                        <!-- Sun Icon (Light Mode) - 2px stroke -->
+                        <svg class="w-5 h-5 hidden dark:block text-brand-secondary group-hover:text-brand-secondary transition-colors"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <!-- Moon Icon (Dark Mode) - 2px stroke -->
+                        <svg class="w-5 h-5 block dark:hidden text-brand-primary hover:text-[#76172c] transition-colors"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button"
+                        class="text-brand-slate dark:text-gray-300 hover:text-brand-primary dark:hover:text-brand-secondary p-2"
+                        id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile navigation menu -->
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div
+                    class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-[#333333]">
+                    <a href="#brand"
+                        class="block px-3 py-2 text-base font-medium text-brand-slate dark:text-white hover:text-brand-primary dark:hover:text-brand-secondary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md">Brand</a>
+                    <a href="#colors"
+                        class="block px-3 py-2 text-base font-medium text-brand-slate dark:text-white hover:text-brand-primary dark:hover:text-brand-secondary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md">Colors</a>
+                    <a href="#typography"
+                        class="block px-3 py-2 text-base font-medium text-brand-slate dark:text-white hover:text-brand-primary dark:hover:text-brand-secondary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md">Typography</a>
+                    <a href="#components"
+                        class="block px-3 py-2 text-base font-medium text-brand-slate dark:text-white hover:text-brand-primary dark:hover:text-brand-secondary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md">Components</a>
+                    <a href="#streams"
+                        class="block px-3 py-2 text-base font-medium text-brand-slate dark:text-white hover:text-brand-primary dark:hover:text-brand-secondary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md">Streams</a>
+                    <div class="pt-2 border-t border-gray-100 dark:border-gray-700 space-y-2">
+                        <!-- Dark Mode Toggle -->
+                        <div class="flex items-center justify-between px-3 py-2">
+                            <span class="text-base font-medium text-brand-slate dark:text-gray-300">Theme</span>
+                            <button id="mobile-theme-toggle"
+                                class="p-2 rounded-lg hover:bg-brand-secondary/10 dark:hover:bg-brand-secondary/20 transition-all group">
+                                <!-- Sun Icon (Light Mode) - 2px stroke -->
+                                <svg class="w-5 h-5 hidden dark:block text-brand-secondary group-hover:text-brand-secondary transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="4" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <!-- Moon Icon (Dark Mode) - 2px stroke -->
+                                <svg class="w-5 h-5 block dark:hidden text-brand-primary hover:text-[#76172c] transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                        <a href="#contact"
+                            class="block px-3 py-2 text-base font-medium text-white bg-brand-primary hover:opacity-90 rounded-md">Download
+                            Assets</a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center pt-16 relative">
+        <!-- Animated background elements -->
+        <div class="absolute top-20 right-20 w-64 h-64 bg-brand-secondary/10 rounded-full blur-3xl animate-collision-1">
+        </div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-brand-primary/20 rounded-full blur-3xl animate-collision-2">
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div
+                    class="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full px-3 py-1">
+                    <span class="w-2 h-2 bg-brand-secondary rounded-full animate-pulse"></span>
+                    <span class="animated-gradient text-xs font-semibold uppercase tracking-wider">The
+                        Digital Moat of Kaar</span>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight font-brand">
+                    <span class="animated-gradient">AI Agents that</span> <br>
+                    <span class="animated-gradient">Multiply ROI</span>
+                </h1>
+                <p class="text-xl text-gray-700 dark:text-gray-300 max-w-lg leading-relaxed">
+                    Achieve 7x times faster SAP Digital Transformations with GenAI and Agentic automation
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-6 pt-4 pb-2">
+                    <!-- Tern Primary Button -->
+                    <button
+                        class="group relative inline-block focus:outline-none focus:ring-4 focus:ring-brand-primary/50 rounded-tl-[2rem] rounded-br-[2rem]"
+                        onclick="console.log('Get Started Clicked')">
+                        <!-- Background Gradient Layer (The Wing) -->
+                        <div
+                            class="absolute inset-0 transition-transform duration-300 ease-out transform group-hover:scale-105 group-hover:shadow-lg group-active:scale-95 rounded-tl-[2rem] rounded-br-[2rem] bg-gradient-to-br from-[#9b1c2c] via-[#d94e28] to-[#ff8f00]">
+                        </div>
+
+                        <!-- Foreground Layer -->
+                        <div
+                            class="relative m-[2px] flex items-center justify-center gap-2 bg-white dark:bg-[#1a1a1a] px-8 py-3.5 rounded-tl-[calc(2rem-2px)] rounded-br-[calc(2rem-2px)] transition-all duration-300 ease-out group-hover:bg-opacity-90 dark:group-hover:bg-opacity-90">
+                            <!-- Text (Animated Gradient) -->
+                            <span class="text-lg font-bold animated-gradient">Get Started</span>
+                        </div>
+                    </button>
+
+                    <!-- Secondary Button (Learn More) -->
+                    <button class="group relative px-8 py-3.5 font-bold overflow-hidden transition-colors duration-300">
+                        <span class="relative z-10 flex items-center gap-2 animated-gradient">
+                            Learn More
+                            
+                        </span>
+                        <!-- Animated underline -->
+                        <span
+                            class="absolute bottom-2 left-8 right-8 h-[2px] bg-gradient-to-r from-brand-primary to-brand-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </button>
+                </div>
+
+                
+            </div>
+
+            <!-- Interactive Dashboard Visual -->
+            <div class="relative animate-float" style="animation-delay: 1s;">
+                <div
+                    class="bg-white dark:bg-[#1c1917] rounded-2xl shadow-2xl shadow-brand-secondary/20 overflow-hidden border border-gray-700/20 dark:border-[#44403c]">
+                    <div class="bg-brand-primary px-4 py-3 flex items-center space-x-2 border-b border-white/10">
+                        <div class="flex space-x-1.5">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="flex-1 text-center">
+                            <span class="text-xs text-gray-400 font-mono bg-[#1a1a1a]/20 px-2 py-1 rounded">ktern.<span
+                                    class="text-brand-secondary">ai</span>/dashboard</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-[#0c0a09] min-h-[300px] grid grid-cols-3 gap-4">
+                        <!-- Dashboard Widgets -->
+                        <div
+                            class="col-span-2 bg-white dark:bg-[#1c1917] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c]">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="font-semibold text-brand-secondary text-sm">Transformation Velocity</h3>
+                                <span
+                                    class="text-brand-secondary text-xs font-bold bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded">+12%</span>
+                            </div>
+                            <div class="h-24 flex items-end space-x-2">
+                                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-t h-[40%]"></div>
+                                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-t h-[60%]"></div>
+                                <div class="w-full bg-brand-primary/20 rounded-t h-[50%]"></div>
+                                <div class="w-full bg-brand-primary/60 rounded-t h-[75%]"></div>
+                                <div class="w-full bg-brand-primary rounded-t h-[90%] relative group">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-slate text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        Now</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-1 space-y-4">
+                            <div
+                                class="bg-white dark:bg-[#1c1917] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c]">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Digital Maps</div>
+                                <div class="text-xl font-bold text-brand-primary">98%</div>
+                                <div
+                                    class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                    <div class="bg-brand-secondary h-full rounded-full" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-[#1c1917] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c]">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Clean Core</div>
+                                <div class="text-xl font-bold text-brand-primary">100%</div>
+                                <div
+                                    class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                    <div class="bg-status-success h-full rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-span-3 bg-white dark:bg-[#1c1917] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c] flex justify-between items-center">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-secondary">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-slate dark:text-gray-200">S/4HANA Assessment
+                                    </p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed just now</p>
+                                </div>
+                            </div>
+                            <button class="tertiary-link text-xs font-medium">View Report →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Identity Section -->
+    <section id="brand"
+        class="py-24 bg-white dark:bg-[#1c1917] relative overflow-hidden transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-secondary font-semibold uppercase tracking-wider text-sm mb-2">Brand Identity</h2>
+                <h3 class="font-brand text-3xl font-bold text-brand-primary dark:text-brand-primary">The Meaning Behind
+                    The Mark</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logo Card -->
+                <div
+                    class="bg-white dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-[#44403c] hover:shadow-xl transition-shadow duration-300">
+                    <div
+                        class="h-32 flex items-center justify-center mb-6 bg-white dark:bg-[#1c1917] rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c]">
+                        <img src="Fav-icon.png" alt="Ktern Logo" class="w-16 h-16">
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-primary dark:text-brand-primary mb-2">The "K" Monogram</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        Represents "Kaar" heritage and the "Key" to transformation. The enclosed structure symbolizes
+                        the 'Moat' - protection, security, and enterprise-grade stability.
+                    </p>
+                </div>
+
+                <!-- Typeface Card -->
+                <div
+                    class="bg-white dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-[#44403c] hover:shadow-xl transition-shadow duration-300">
+                    <div
+                        class="h-32 flex flex-col items-center justify-center mb-6 bg-white dark:bg-[#1c1917] rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c] space-y-2">
+                        <span class="text-4xl font-bold text-brand-slate dark:text-gray-200 font-sans">Geist</span>
+                        <span class="text-lg text-gray-400 font-mono">JetBrains Mono</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-primary dark:text-brand-primary mb-2">Typography System</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        <strong>Geist</strong> for UI clarity and readability across devices. <strong>JetBrains
+                            Mono</strong> for technical precision, representing the 'Clean Core' code logic.
+                    </p>
+                </div>
+
+                <!-- Iconography Card -->
+                <div
+                    class="bg-white dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-[#44403c] hover:shadow-xl transition-shadow duration-300">
+                    <div
+                        class="h-32 flex items-center justify-center mb-6 bg-white dark:bg-[#1c1917] rounded-xl shadow-sm border border-gray-100 dark:border-[#44403c] space-x-4">
+                        <svg class="w-8 h-8 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                            </path>
+                        </svg>
+                        <svg class="w-8 h-8 text-brand-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-primary dark:text-brand-primary mb-2">Iconography</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        Line-based, geometric, 2px stroke weight. Represents precision, technical accuracy, and the
+                        structured nature of SAP systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color System -->
+    <section id="colors" class="py-24 bg-white dark:bg-background-dark transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-secondary font-semibold uppercase tracking-wider text-sm mb-2">Color System</h2>
+                <h3 class="font-brand text-3xl font-bold text-brand-primary dark:text-brand-primary">Palette with
+                    Purpose</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Primary Palette -->
+                <div class="space-y-6">
+                    <h4 class="text-lg font-semibold text-brand-primary dark:text-brand-primary mb-4">Primary Brand
+                        Colors</h4>
+
+                    <div
+                        class="group relative overflow-hidden rounded-xl bg-brand-primary h-32 flex items-end p-6 shadow-lg hover:shadow-brand-primary/30 transition-all cursor-pointer">
+                        <div class="w-full flex justify-between items-end text-white z-10">
+                            <div>
+                                <p class="font-bold text-xl">Deep Wine</p>
+                                <p class="text-sm opacity-80">Primary • Core Actions • Navigation • CTAs</p>
+                                <p class="text-xs mt-1 font-medium">Primary brand color for trust and governance</p>
+                            </div>
+                            <p class="font-mono text-sm opacity-60">#9b1c2c</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group relative overflow-hidden rounded-xl bg-brand-secondary h-32 flex items-end p-6 shadow-lg hover:shadow-brand-secondary/30 transition-all cursor-pointer">
+                        <div class="w-full text-white z-10">
+                            <div>
+                                <p class="font-bold text-xl">Arctic Amber</p>
+                                <p class="text-sm opacity-80">Secondary • AI • Innovation Triggers</p>
+                                <p class="text-xs mt-1 font-medium">Secondary accent for AI features and highlights</p>
+                            </div>
+                            <p class="font-mono text-xs opacity-80">#ea580c</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group relative overflow-hidden rounded-xl bg-brand-slate h-32 flex items-end p-6 shadow-lg hover:shadow-gray-400/30 transition-all cursor-pointer">
+                        <div class="w-full text-white z-10">
+                            <div>
+                                <p class="font-bold text-lg">Slate Gray</p>
+                                <p class="text-sm opacity-80">Support • Text • Precision</p>
+                                <p class="text-xs mt-1 font-medium">Body text and subtle elements</p>
+                            </div>
+                            <p class="font-mono text-xs opacity-60">#334155</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usage Ratio -->
+                <div
+                    class="bg-white dark:bg-background-dark p-8 rounded-2xl border border-gray-200 dark:border-[#44403c] shadow-sm">
+                    <h4 class="text-lg font-semibold text-brand-slate dark:text-gray-200 mb-6">Color Usage Ratio
+                        (60/30/10)</h4>
+
+                    <!-- Light Mode Ratio -->
+                    <div class="mb-8">
+                        <p class="text-sm font-medium text-brand-primary mb-3">Light Mode</p>
+                        <div class="flex h-16 w-full rounded-lg overflow-hidden mb-3 border border-gray-200">
+                            <div
+                                class="bg-[#f8f8ff] w-[60%] flex items-center justify-center text-xs text-gray-600 font-semibold border-r border-gray-200">
+                                60% Polar White</div>
+                            <div
+                                class="bg-brand-primary w-[30%] flex items-center justify-center text-xs text-white font-bold">
+                                30% Deep Wine</div>
+                            <div
+                                class="bg-brand-secondary w-[10%] flex items-center justify-center text-xs text-white font-bold">
+                                10% Amber</div>
+                        </div>
+                        <p class="text-xs text-gray-500">Neutral: #f8f8ff | Primary: #a9203e | Secondary: #ff8f00</p>
+                    </div>
+
+                    <!-- Dark Mode Ratio -->
+                    <div class="mb-6">
+                        <p class="text-sm font-medium text-brand-secondary mb-3">Dark Mode</p>
+                        <div class="flex h-16 w-full rounded-lg overflow-hidden mb-3 border border-[#44403c]">
+                            <div
+                                class="bg-[#100c08] w-[60%] flex items-center justify-center text-xs text-gray-400 font-semibold border-r border-[#44403c]">
+                                60% Cosmic Black</div>
+                            <div
+                                class="bg-[#c41e3a] w-[30%] flex items-center justify-center text-xs text-white font-bold">
+                                30% Burgundy</div>
+                            <div
+                                class="bg-[#ffae42] w-[10%] flex items-center justify-center text-xs text-gray-900 font-bold">
+                                10% Solar</div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Neutral: #100c08 | Primary: #c41e3a |
+                            Secondary: #ffae42</p>
+                    </div>
+
+                    <p
+                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-[#44403c] pt-6">
+                        We maintain a clean, "white-core" aesthetic to reflect clarity in complex systems. Deep Wine is
+                        the primary brand color for navigation and core actions; Arctic Amber is the secondary accent
+                        for AI and highlight states. The 10% accent zone experiments with vibrant energy to draw
+                        attention to transformative moments.
+                    </p>
+
+                    <div class="mt-8 pt-8 border-t border-gray-100 dark:border-[#44403c]">
+                        <h4 class="text-lg font-semibold text-brand-slate dark:text-gray-200 mb-4">Dark/Light Mode
+                            Compatibility</h4>
+                        <div class="space-y-4">
+                            <div
+                                class="bg-gray-50 dark:bg-[#100c08] p-4 rounded-lg border border-gray-200 dark:border-[#44403c]">
+                                <p class="text-sm font-medium text-brand-primary mb-2">Theme System</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">All brand colors are optimized for
+                                    both light and dark modes with proper contrast ratios and smooth transitions.</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div
+                                    class="bg-white dark:bg-[#1c1917] p-3 rounded border border-gray-200 dark:border-[#44403c]">
+                                    <p class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Light Mode</p>
+                                    <p class="text-xs text-gray-500">Polar white backgrounds with vibrant brand accents
+                                    </p>
+                                </div>
+                                <div class="bg-[#1c1917] dark:bg-background-dark p-3 rounded border border-[#44403c]">
+                                    <p class="text-xs font-medium text-gray-300 mb-1">Dark Mode</p>
+                                    <p class="text-xs text-gray-400">Cosmic black backgrounds with optimized color
+                                        intensity</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-100 dark:border-[#44403c]">
+                        <h4 class="text-lg font-semibold text-brand-primary dark:text-brand-primary mb-4">Semantic
+                            Status Colors</h4>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="w-full h-8 rounded mb-2" style="background-color: #3cd070;"></div>
+                                <p class="text-xs font-medium dark:text-gray-300 mb-1">Success</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">#3cd070</p>
+                                <p class="text-xs text-gray-400">Emerald Teal</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-full h-8 rounded mb-2" style="background-color: #fada5e;"></div>
+                                <p class="text-xs font-medium dark:text-gray-300 mb-1">Warning</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">#fada5e</p>
+                                <p class="text-xs text-gray-400">Honey Gold</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-full h-8 rounded mb-2" style="background-color: #c41e3a;"></div>
+                                <p class="text-xs font-medium dark:text-gray-300 mb-1">Critical</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">#c41e3a</p>
+                                <p class="text-xs text-gray-400">Burgundy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography"
+        class="py-24 bg-white dark:bg-[#1c1917] relative overflow-hidden transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-secondary font-semibold uppercase tracking-wider text-sm mb-2">Typography System
+                </h2>
+                <h3 class="font-brand text-3xl font-bold text-brand-primary dark:text-brand-primary">Clarity &
+                    Personality</h3>
+            </div>
+
+            <!-- REM-First Note -->
+            <div
+                class="max-w-3xl mx-auto mb-12 bg-brand-secondary/5 dark:bg-brand-secondary/10 border border-brand-secondary/20 rounded-xl p-6">
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <span class="font-semibold text-brand-primary">REM-First Approach:</span> All font sizes are
+                    implemented in rem for accessibility and scalability; pixel values shown are only for reference.
+                    This ensures the typography respects user browser settings.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Primary Font -->
+                <div
+                    class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-100 dark:border-[#44403c] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-2 h-6 bg-brand-secondary rounded-full"></div>
+                        <h4 class="text-xl font-bold text-brand-primary">Geist</h4>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Primary UI font for dashboards, data
+                        tables, forms, and settings. Represents precision and clarity.</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-primary">H1 — 2.5rem / 800</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-xs">Product pages, hero titles</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-brand-primary">H2 — 2rem / 700</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-xs">Section headings</p>
+                        </div>
+                        <div>
+                            <p class="text-base text-brand-primary">Body — 1rem / 400</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-xs">Default UI copy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Display Font -->
+                <div
+                    class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-100 dark:border-[#44403c] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-2 h-6 bg-brand-secondary rounded-full"></div>
+                        <h4 class="font-brand text-xl font-bold text-brand-primary">Manrope</h4>
+                    </div>
+                    <p class="font-brand text-gray-600 dark:text-gray-400 text-sm mb-6">Brand display font for marketing
+                        headlines and landing pages. Adds warmth and human connection to the AI-led experience.</p>
+                    <div
+                        class="p-4 bg-brand-primary/5 dark:bg-brand-secondary/20 rounded-lg border border-gray-100 dark:border-[#44403c]">
+                        <p class="font-brand text-xl font-bold text-brand-secondary">The Digital Moat</p>
+                        <p class="font-brand text-xs text-gray-500 dark:text-gray-400 mt-1">For banners and hero accents
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Code Font -->
+                <div
+                    class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-100 dark:border-[#44403c] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-2 h-6 bg-brand-secondary/80 rounded-full"></div>
+                        <h4 class="text-xl font-bold text-brand-primary">JetBrains Mono</h4>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Technical monospace font representing
+                        'Clean Core' code logic. Used for API docs, code snippets, and system identifiers.</p>
+                    <div
+                        class="p-4 bg-brand-primary/5 dark:bg-brand-secondary/20 rounded-lg border border-gray-100 dark:border-[#44403c] font-mono">
+                        <code class="text-sm text-brand-secondary">function transform() {
+  return "Clean Code";
+}</code>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">For code blocks and technical content
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Typography Roles -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <!-- Governance Font -->
+                <div
+                    class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-100 dark:border-[#44403c] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-2 h-6 bg-brand-secondary rounded-full"></div>
+                        <h4 class="font-serif text-xl font-bold text-brand-primary">IBM Plex Serif</h4>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Governance and authority font for
+                        whitepapers, executive reports, and long-form reading. Represents integrity and documented
+                        truth.</p>
+                    <div class="p-4 bg-white dark:bg-[#1c1917] rounded-lg border border-gray-200 dark:border-[#44403c]">
+                        <p class="font-serif text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                            "Enterprise governance requires clarity, precision, and trust in every document."
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">For reports and whitepapers</p>
+                    </div>
+                </div>
+
+                <!-- Technical Visualization Font -->
+                <div
+                    class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-100 dark:border-[#44403c] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-2 h-6 bg-brand-secondary rounded-full"></div>
+                        <h4 class="font-viz text-xl font-bold text-brand-primary">Sora</h4>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Technical visualization font for process
+                        diagrams, workflow labels, and architecture maps. Distinct geometry ensures legibility at small
+                        sizes.</p>
+                    <div
+                        class="p-4 bg-white dark:bg-[#1c1917] rounded-lg border border-gray-200 dark:border-[#44403c] flex items-center justify-center">
+                        <div class="text-center font-viz">
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">PROCESS FLOW</p>
+                            <p class="text-sm font-semibold text-brand-primary">Prepare → Govern → Orchestrate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Streams Section (The Flowchart) -->
+    <section id="streams"
+        class="py-24 bg-gradient-to-br from-[#f8f8ff] to-[#f5f5f5] dark:from-[#100c08] dark:to-[#1c1917] relative overflow-hidden transition-colors duration-200">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5 dark:opacity-10"
+            style="background-image: radial-gradient(#a9203e 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-brand-secondary font-semibold uppercase tracking-wider text-sm mb-2">The Digital Streams
+                </h2>
+                <h3 class="font-brand text-3xl font-bold text-brand-primary dark:text-white">End-to-End Transformation
+                    Architecture</h3>
+            </div>
+
+            <!-- Interactive Flowchart Visualization -->
+            <div class="relative">
+                <!-- Connecting Line -->
+                <div
+                    class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-brand-primary/20 dark:bg-brand-secondary/30 -translate-y-1/2 z-0">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+                    <!-- Stream 1 -->
+                    <div class="group">
+                        <div
+                            class="bg-white dark:bg-[#1c1917] border border-gray-200 dark:border-[#44403c] rounded-xl p-6 hover:shadow-lg hover:border-brand-primary dark:hover:border-brand-secondary transition-all duration-300 hover:-translate-y-2 h-full">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 font-bold text-sm">
+                                1</div>
+                            <h4 class="text-lg font-bold text-brand-primary dark:text-white mb-2">Prepare</h4>
+                            <p class="text-brand-primary dark:text-brand-secondary text-sm font-medium mb-3">Digital
+                                Maps</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">ECC to S/4HANA
+                                assessment, compatibility checks, and roadmap definition.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 2 -->
+                    <div class="group">
+                        <div
+                            class="bg-white dark:bg-[#1c1917] border border-gray-200 dark:border-[#44403c] rounded-xl p-6 hover:shadow-lg hover:border-brand-primary dark:hover:border-brand-secondary transition-all duration-300 hover:-translate-y-2 h-full">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 font-bold text-sm">
+                                2</div>
+                            <h4 class="text-lg font-bold text-brand-primary dark:text-white mb-2">Governance</h4>
+                            <p class="text-brand-primary dark:text-brand-secondary text-sm font-medium mb-3">Digital
+                                Process</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Workflow automation,
+                                compliance checks, and process mining.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 3 -->
+                    <div class="group">
+                        <div
+                            class="bg-white dark:bg-[#1c1917] border border-gray-200 dark:border-[#44403c] rounded-xl p-6 hover:shadow-lg hover:border-brand-primary dark:hover:border-brand-secondary transition-all duration-300 hover:-translate-y-2 h-full">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 font-bold text-sm">
+                                3</div>
+                            <h4 class="text-lg font-bold text-brand-primary dark:text-white mb-2">Orchestrate</h4>
+                            <p class="text-brand-primary dark:text-brand-secondary text-sm font-medium mb-3">Digital
+                                Projects</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Project management,
+                                milestone tracking, and stakeholder reporting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 4 -->
+                    <div class="group">
+                        <div
+                            class="bg-white dark:bg-[#1c1917] border border-gray-200 dark:border-[#44403c] rounded-xl p-6 hover:shadow-lg hover:border-brand-primary dark:hover:border-brand-secondary transition-all duration-300 hover:-translate-y-2 h-full">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 font-bold text-sm">
+                                4</div>
+                            <h4 class="text-lg font-bold text-brand-primary dark:text-white mb-2">Test</h4>
+                            <p class="text-brand-primary dark:text-brand-secondary text-sm font-medium mb-3">Digital
+                                Labs</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Intelligent automated
+                                testing, defect management, and validation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 5 -->
+                    <div class="group">
+                        <div
+                            class="bg-white dark:bg-[#1c1917] border border-gray-200 dark:border-[#44403c] rounded-xl p-6 hover:shadow-lg hover:border-brand-primary dark:hover:border-brand-secondary transition-all duration-300 hover:-translate-y-2 h-full relative overflow-hidden">
+                            <div
+                                class="absolute -right-4 -top-4 w-20 h-20 bg-brand-secondary/10 dark:bg-brand-secondary/20 rounded-full blur-2xl">
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-lg bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary flex items-center justify-center mb-4 font-bold text-sm">
+                                5</div>
+                            <h4 class="text-lg font-bold text-brand-primary dark:text-white mb-2">Release</h4>
+                            <p class="text-brand-primary dark:text-brand-secondary text-sm font-medium mb-3">Digital
+                                Mines</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Clean core strategy,
+                                code simulation, and final deployment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined Components & Motion Section -->
+    <section id="components"
+        class="py-24 bg-white dark:bg-[#1c1917] relative overflow-hidden transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Main Section Header -->
+            <div class="text-center mb-20">
+                <h2 class="text-brand-secondary font-semibold uppercase tracking-wider text-sm mb-2">Design System</h2>
+                <h3 class="font-brand text-3xl font-bold text-brand-primary">Components & Interaction</h3>
+                <p class="max-w-2xl mx-auto mt-4 text-gray-600 dark:text-gray-400 mb-8">
+                    A unified library of enterprise-grade UI elements paired with purposeful motion guidelines.
+                </p>
+                <a href="components.html"
+                    class="inline-flex items-center gap-2 bg-brand-primary text-white font-brand font-semibold rounded-md px-6 py-3 hover:bg-maroon-600 transition-all shadow-lg shadow-brand-primary/20">
+                    View Full Component Library
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- PART 1: UI Component Library -->
+            <div class="mb-24">
+                <h4 class="text-2xl font-bold text-brand-primary mb-10 border-l-4 border-brand-secondary pl-4">
+                    UI Component Library
+                </h4>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Column 1: Buttons & Inputs -->
+                    <div class="space-y-8">
+                        <h5
+                            class="text-lg font-semibold text-brand-slate dark:text-gray-200 border-b border-gray-200 dark:border-[#44403c] pb-2">
+                            Interactive Elements</h5>
+
+                        <!-- Buttons -->
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <button
+                                    class="bg-brand-primary text-white px-6 py-2.5 rounded-md font-medium hover:bg-brand-primary/90 dark:hover:bg-brand-primary/80 transition-all shadow-lg shadow-brand-primary/20">
+                                    Primary Action
+                                </button>
+                                <button
+                                    class="bg-white dark:bg-[#1c1917] text-brand-primary border border-brand-primary px-6 py-2.5 rounded-md font-medium hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
+                                    Secondary Action
+                                </button>
+                                <button
+                                    class="text-brand-slate dark:text-gray-400 font-medium hover:text-brand-secondary dark:hover:text-brand-secondary transition-colors">
+                                    Tertiary Link →
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-400 font-mono">border-radius: 6px | font-weight: 500 | padding:
+                                10px 24px</p>
+                        </div>
+
+                        <!-- Input -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-brand-slate dark:text-gray-200">Input
+                                Field</label>
+                            <input type="text" placeholder="Enter project name..."
+                                class="w-full px-4 py-2.5 border border-gray-300 dark:border-[#44403c] bg-white dark:bg-[#1c1917] text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-secondary/50 focus:border-brand-secondary transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Cards & Layout -->
+                    <div class="space-y-8">
+                        <h5
+                            class="text-lg font-semibold text-brand-slate dark:text-gray-200 border-b border-gray-200 dark:border-[#44403c] pb-2">
+                            Card & Content</h5>
+
+                        <div
+                            class="bg-white dark:bg-[#1c1917] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg text-brand-primary">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <span
+                                    class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs px-2 py-1 rounded font-medium">Active</span>
+                            </div>
+                            <h5 class="font-bold text-brand-slate dark:text-gray-200 mb-1">Project Atlas</h5>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">S/4HANA Migration - Phase 2</p>
+                            <div class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-brand-primary h-full rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 2: Motion & Interaction -->
+            <div>
+                <h4 class="text-2xl font-bold text-brand-primary mb-10 border-l-4 border-brand-secondary pl-4">
+                    Motion System
+                </h4>
+
+                <!-- 1. Micro-interactions -->
+                <div class="mb-16">
+                    <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Micro-interactions
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Hover Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Hover State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Interactive</span>
+                            </div>
+                            <div class="space-y-4">
+                                <button
+                                    class="w-full py-2.5 px-4 bg-brand-primary text-white rounded-lg hover:opacity-90 transition-opacity duration-200 text-sm font-medium">
+                                    Hover Me
+                                </button>
+                                <div class="text-xs text-gray-400">Subtle opacity shift</div>
+                            </div>
+                        </div>
+
+                        <!-- Focus Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Focus State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Input</span>
+                            </div>
+                            <div class="space-y-4">
+                                <input type="text"
+                                    class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-[#44403c] bg-white dark:bg-[#0c0a09] text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-brand-secondary/50 focus:border-brand-secondary outline-none transition-all duration-200"
+                                    placeholder="Click me">
+                                <div class="text-xs text-gray-400">Ring & border highlight</div>
+                            </div>
+                        </div>
+
+                        <!-- Loading Demo -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-brand-primary">Loading State</span>
+                                <span
+                                    class="text-xs px-2 py-1 bg-brand-secondary/10 text-brand-secondary rounded-full">Status</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-2">
+                                    <div
+                                        class="w-6 h-6 border-2 border-brand-secondary/20 border-t-brand-secondary rounded-full animate-spin">
+                                    </div>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Processing...</span>
+                                </div>
+                                <div class="text-xs text-gray-400">Infinite rotation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Transitions & Timing -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Transitions -->
+                    <div>
+                        <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                            <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                            Transitions
+                        </h5>
+                        <div class="space-y-6">
+                            <!-- Fade In -->
+                            <div
+                                class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] group">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-medium text-brand-primary">Fade Effect</span>
+                                    <span class="text-xs text-gray-400">300ms</span>
+                                </div>
+                                <div
+                                    class="h-16 bg-white dark:bg-[#0c0a09] rounded-lg flex items-center justify-center">
+                                    <button
+                                        class="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-medium transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                                        Hover to Fade Out
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Slide In -->
+                            <div
+                                class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c] group">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-medium text-brand-primary">Slide Effect</span>
+                                    <span class="text-xs text-gray-400">400ms cubic-bezier</span>
+                                </div>
+                                <div class="h-16 bg-gray-50 dark:bg-[#100c08] rounded-lg overflow-hidden relative">
+                                    <div
+                                        class="absolute inset-0 bg-brand-secondary/10 dark:bg-brand-secondary/20 flex items-center justify-center transition-transform duration-400 ease-[cubic-bezier(.4,0,.2,1)] group-hover:translate-x-full">
+                                        <span
+                                            class="text-sm text-brand-primary dark:text-brand-secondary font-medium">Slide
+                                            Right →</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timing Specs -->
+                    <div>
+                        <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                            <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                            Timing Specifications
+                        </h5>
+
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-5 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="space-y-4">
+                                <div>
+                                    <h6
+                                        class="text-sm font-bold text-brand-primary mb-3 uppercase tracking-wide text-xs">
+                                        Durations</h6>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center justify-between text-sm">
+                                            <span class="text-gray-600 dark:text-gray-400">Quick (Hover/Fade)</span>
+                                            <span
+                                                class="font-mono text-xs bg-white dark:bg-[#0c0a09] text-brand-primary px-2 py-1 rounded border border-gray-200 dark:border-[#44403c]">100ms
+                                                - 200ms</span>
+                                        </li>
+                                        <li class="flex items-center justify-between text-sm">
+                                            <span class="text-gray-600 dark:text-gray-400">Standard (Modal/Slide)</span>
+                                            <span
+                                                class="font-mono text-xs bg-white dark:bg-[#0c0a09] text-brand-primary px-2 py-1 rounded border border-gray-200 dark:border-[#44403c]">300ms
+                                                - 400ms</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="pt-4 border-t border-gray-100 dark:border-[#44403c]">
+                                    <h6
+                                        class="text-sm font-bold text-brand-primary mb-3 uppercase tracking-wide text-xs">
+                                        Easing Functions</h6>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center justify-between text-sm">
+                                            <span class="text-gray-600 dark:text-gray-400">Natural</span>
+                                            <span
+                                                class="font-mono text-xs bg-white dark:bg-[#0c0a09] text-brand-primary px-2 py-1 rounded border border-gray-200 dark:border-[#44403c]">ease-in-out</span>
+                                        </li>
+                                        <li class="flex items-center justify-between text-sm">
+                                            <span class="text-gray-600 dark:text-gray-400">Entrance</span>
+                                            <span
+                                                class="font-mono text-xs bg-white dark:bg-[#0c0a09] text-brand-primary px-2 py-1 rounded border border-gray-200 dark:border-[#44403c]">cubic-bezier(0,
+                                                0, 0.2, 1)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Border Radius & Shape Language -->
+                <div class="mt-16">
+                    <h5 class="text-lg font-bold text-brand-slate dark:text-gray-200 mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Border Radius & Shape Language
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Buttons/Inputs -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-brand-primary rounded-md flex items-center justify-center text-white text-sm font-medium">
+                                    Button / Input
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">6px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Buttons, inputs, badges</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-md</p>
+                        </div>
+
+                        <!-- Cards -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-brand-secondary/20 rounded-xl flex items-center justify-center text-brand-primary text-sm font-medium border border-brand-secondary/30">
+                                    Card Container
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">12px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Cards, panels, containers</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-xl</p>
+                        </div>
+
+                        <!-- Modals -->
+                        <div
+                            class="bg-white dark:bg-[#0c0a09] p-6 rounded-xl border border-gray-200 dark:border-[#44403c]">
+                            <div class="mb-4">
+                                <div
+                                    class="w-full h-12 bg-white dark:bg-[#0c0a09] rounded-2xl flex items-center justify-center text-brand-slate dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-[#44403c]">
+                                    Modal Dialog
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold text-brand-primary mb-1">16px Radius</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Modals, overlays, popovers</p>
+                            <p class="text-xs font-mono text-gray-400 mt-2">rounded-2xl</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Animation Principles -->
+                <div
+                    class="mt-16 bg-brand-primary/5 dark:bg-brand-primary/10 border border-brand-primary/20 rounded-xl p-8">
+                    <h5 class="text-lg font-bold text-brand-primary mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-brand-secondary rounded-full mr-3"></span>
+                        Animation Principles
+                    </h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h6 class="text-sm font-semibold text-brand-primary mb-3">✓ Do</h6>
+                            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Use 200-300ms eased transitions for smooth, professional feel</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Apply subtle opacity and position shifts for micro-interactions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Maintain consistent border radius across component types</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-brand-secondary mr-2">•</span>
+                                    <span>Use cubic-bezier for natural, aerodynamic motion</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h6 class="text-sm font-semibold text-brand-primary mb-3">✗ Don't</h6>
+                            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>No bouncy or spring animations (not enterprise-appropriate)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Avoid off-screen fly-ins or dramatic entrances</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Don't mix different radius values in the same component</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">•</span>
+                                    <span>Never use fully rounded (pill-shaped) buttons</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="relative bg-brand-slate dark:bg-[#1c1917] text-white pt-20 pb-12 overflow-hidden transition-colors duration-200">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-secondary/30 via-brand-secondary to-brand-secondary/30">
+        </div>
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-brand-secondary/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Brand Column -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="Fav-icon.png" alt="KTern Logo" class="w-8 h-8">
+                        <p class="font-brand font-bold text-white dark:text-gray-100 text-2xl">KTern.<span
+                                class="text-brand-secondary">AI</span></p>
+                    </div>
+                    <p class="text-gray-300 dark:text-gray-400 text-sm leading-relaxed max-w-md mb-6">
+                        The digital moat of Kaar Technologies. Accelerating SAP transformations with intelligence,
+                        automation, and integrity.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 dark:bg-white/5 hover:bg-brand-secondary/20 border border-white/10 dark:border-white/10 flex items-center justify-center text-white/80 dark:text-white/80 hover:text-white transition-all duration-300 hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.1-.254-.445-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.14 20.205 22 16.425 22 12.017 22 6.484 17.522 2 12 2z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 dark:bg-white/5 hover:bg-brand-secondary/20 border border-white/10 dark:border-white/10 flex items-center justify-center text-white/80 dark:text-white/80 hover:text-white transition-all duration-300 hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 dark:bg-white/5 hover:bg-brand-secondary/20 border border-white/10 dark:border-white/10 flex items-center justify-center text-white/80 dark:text-white/80 hover:text-white transition-all duration-300 hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.052-.141-.12-.293-.184-.445a25.424 25.424 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5.149A9.577 9.577 0 0112 3.475zm-3.633.803c.271.73.652 1.586 1.061 2.524-.974.327-2.27.717-3.256.977-1.15-1.096-1.638-2.511-1.63-2.515 2.26.017 3.826 1.805 3.825 1.805zM3.453 12.01v-.26c.37.01 4.512.065 9.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.526 8.526 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.309 35.309 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.66-6.084 2.68-.423 5.023.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Column 1 -->
+                <div class="lg:col-span-2 lg:col-start-7">
+                    <h5 class="text-sm font-semibold text-white dark:text-gray-100 mb-5 flex items-center">
+                        <span class="w-1.5 h-1.5 bg-brand-secondary rounded-full mr-2"></span>
+                        Resources
+                    </h5>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Logo Assets
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Font Files
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                UI Kit (Figma)
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Design System
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Links Column 2 -->
+                <div class="lg:col-span-2">
+                    <h5 class="text-sm font-semibold text-white dark:text-gray-100 mb-5 flex items-center">
+                        <span class="w-1.5 h-1.5 bg-brand-secondary rounded-full mr-2"></span>
+                        Company
+                    </h5>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                About Us
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Careers
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Blog
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Links Column 3 -->
+                <div class="lg:col-span-2">
+                    <h5 class="text-sm font-semibold text-white dark:text-gray-100 mb-5 flex items-center">
+                        <span class="w-1.5 h-1.5 bg-brand-secondary rounded-full mr-2"></span>
+                        Support
+                    </h5>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Documentation
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Contact Support
+                            </a></li>
+                        <li><a href="#"
+                                class="text-gray-300 dark:text-gray-400 hover:text-brand-secondary text-sm flex items-center group transition-colors">
+                                <span class="opacity-0 group-hover:opacity-100 text-brand-secondary mr-1">→</span>
+                                Status
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="mt-16 pt-8 border-t border-white/10 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs text-gray-400 dark:text-gray-500">&copy; 2025 KTern.<span
+                        class="text-brand-secondary">AI</span>. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#"
+                        class="text-xs text-gray-400 dark:text-gray-500 hover:text-white transition-colors">Privacy
+                        Policy</a>
+                    <a href="#"
+                        class="text-xs text-gray-400 dark:text-gray-500 hover:text-white transition-colors">Terms of
+                        Service</a>
+                    <a href="#"
+                        class="text-xs text-gray-400 dark:text-gray-500 hover:text-white transition-colors">Cookie
+                        Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const blurOverlay = document.getElementById('blur-overlay');
+
+        // Function to open mobile menu
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            blurOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            blurOverlay.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Toggle menu on button click
+        mobileMenuButton.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when clicking on the blur overlay
+        blurOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.classList.remove('light', 'dark');
+        htmlElement.classList.add(currentTheme);
+
+        // Theme toggle function
+        function toggleTheme() {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Add event listeners to both toggle buttons
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+    </script>
+
+</body>
+
+</html>

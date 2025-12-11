@@ -1,0 +1,12 @@
+# Ignore local/IDE files
+.vscode/
+.idea/
+*.log
+
+# Ignore deprecated/backup files
+*_deprecated*
+not for now/
+
+# OS files
+.DS_Store
+Thumbs.db
