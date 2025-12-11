@@ -1403,8 +1403,11 @@ Simple, clean project card with progress indicator.
     <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md 
                        bg-brand-primary/10 text-brand-primary 
                        font-medium text-sm">
-      <svg class="w-5 h-5" stroke="currentColor" stroke-width="2">
-        <!-- Icon -->
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 2C8 2 6 6 6 12s2 10 6 10M12 2c4 0 6 4 6 10s-2 10-6 10" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="text-brand-secondary" d="M9 12h6" />
       </svg>
       Dashboard
     </a>
@@ -1414,8 +1417,12 @@ Simple, clean project card with progress indicator.
                        text-gray-600 hover:bg-gray-50 hover:text-brand-primary 
                        font-medium text-sm 
                        transition-colors duration-200">
-      <svg class="w-5 h-5" stroke="currentColor" stroke-width="2">
-        <!-- Icon -->
+      <svg class="w-5 h-5 text-gray-400 group-hover:text-brand-primary transition-colors" 
+           fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 5v14M16 5v14M12 4v4m0 8v4" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="text-brand-secondary" d="M12 10v2" />
       </svg>
       Projects
     </a>
