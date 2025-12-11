@@ -813,15 +813,23 @@ export const FlaskIcon = ({ className }) => (
   - Focus: 4px ring `maroon-500/50`
 
 ```html
-<button class="bg-brand-primary text-white font-brand font-semibold 
-               rounded-md px-4 py-2.5 
-               hover:bg-[#76172c] 
-               active:translate-y-0.5
-               disabled:opacity-50 disabled:cursor-not-allowed
-               focus:ring-4 focus:ring-brand-primary/50 focus:outline-none
-               transition-all duration-200 
-               shadow-lg shadow-brand-primary/20">
-  Save Changes
+<button class="group relative px-6 py-2.5 bg-brand-primary text-white font-brand font-bold 
+               rounded-xl rounded-tl-none 
+               border-2 border-transparent 
+               shadow-lg shadow-brand-primary/30 
+               hover:shadow-brand-primary/50 hover:-translate-y-0.5 
+               transition-all duration-300 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-brand-primary via-[#d94e28] to-brand-primary 
+              opacity-0 group-hover:opacity-100 
+              transition-opacity duration-500 
+              bg-[length:200%_100%] animate-gradient-x">
+  </div>
+  <span class="relative flex items-center gap-2">
+      Save Changes
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+  </span>
 </button>
 ```
 
@@ -858,13 +866,16 @@ export const FlaskIcon = ({ className }) => (
   - Text: `gray-700`
 
 ```html
-<button class="bg-white text-gray-700 font-brand font-medium 
-               border border-gray-200 
-               rounded-md px-4 py-2.5 
-               hover:bg-gray-50 hover:border-gray-300
-               focus:ring-4 focus:ring-gray-200 focus:outline-none
-               transition-all duration-200">
-  Cancel
+<button class="group relative px-6 py-2.5 bg-transparent font-brand font-bold 
+               rounded-xl rounded-tl-none overflow-hidden 
+               transition-all duration-300 
+               border-2 border-brand-primary 
+               hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-primary/20">
+  <div class="absolute inset-0 bg-brand-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+  </div>
+  <span class="relative z-10 text-brand-primary group-hover:text-white transition-colors duration-300">
+      Cancel
+  </span>
 </button>
 ```
 
