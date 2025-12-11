@@ -52,7 +52,7 @@
 
 ### 1.1 Design Philosophy
 
-**"From Chaos to Cosmos"**
+**"KTern.AI Agents that Multiplies ROI."**
 
 KTern.AI's design system is inspired by the Arctic Tern—a migratory bird representing precision, adaptability, endurance, and balance. Our design philosophy merges enterprise-grade governance clarity with empathetic digital warmth.
 
@@ -2491,16 +2491,9 @@ body {
 - [Tailwind CSS Documentation](https://tailwindcss.com)
 - [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [Lucide Icons](https://lucide.dev)
-<!-- 
-**Internal Tools:**
-- Figma Design Files: `figma.com/ktern-design-system`
-- Component Storybook: `storybook.ktern.internal`
-- Token Validator: `tokens.ktern.internal` -->
-
-**Only Finalized until 2nd Section.**
 
 ---
 
 **Document Maintained By:** KTern.AI Design Team  
 **For Questions:** Moulikrishnan
-**Last Edited:** 8 December 2025
+**Last Edited:** 12 December 2025
