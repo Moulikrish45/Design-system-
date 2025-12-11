@@ -6,6 +6,7 @@
 !Fav-icon.png
 !KTern Design System.md
 !.gitignore
+!.nojekyll
 
 # Ignore local/IDE files
 .vscode/
